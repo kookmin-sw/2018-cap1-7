@@ -28,9 +28,8 @@ https://kookmin-sw.github.io/2018-cap1-7
 프로젝트 소개하는 영상을 추가하세요
 
 ### 3. 팀 소개
-#### 고가을 (팀장)
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
-- 고가을 (팀장)
+#### 고가을 (팀장)
 - email:gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
 #### 김예린
