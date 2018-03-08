@@ -29,9 +29,9 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 3. 팀 소개
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
-** 고가을 ** (팀장)
--email:gaeulgo2@gmail.com
--facebook : https://www.facebook.com/go.gaeul
+**고가을** (팀장)
+- email:gaeulgo2@gmail.com
+- facebook : https://www.facebook.com/go.gaeul
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
 **김예린** 
 -email : ylynnkim@gmail.com
