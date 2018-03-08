@@ -19,19 +19,19 @@
 - email : gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
 
-<img src="/2018-cap1-7/images/yealynn.jpeg" width="300px" height="300px">
+<img src="/images/yealynn.jpeg" width="300px" height="300px">
 
 #### 김예린
 - email : ylynnkim@gmail.com
 - facebook : https://www.facebook.com/yealynn.kim 
 
-<img src="/2018-cap1-7/images/sungho.jpeg" width="300px" height="400px">
+<img src="/images/sungho.jpeg" width="300px" height="400px">
 
 #### 류성호
 - email : kalim55555@gmail.com
 - facebook : https://www.facebook.com/profile.php?id=100002293450549
 
-<img src="/2018-cap1-7/images/seungwoo.jpeg" width="300px" height="400px">
+<img src="/images/seungwoo.jpeg" width="300px" height="400px">
 
 #### 정승우
 - email : tmddnnim2da@gmail.com
