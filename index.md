@@ -13,7 +13,7 @@
 ## 2. 팀 소개
 - SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.
 
-<img src="/2018-cap1-7/images/gaeul.jpeg" width="300px" height="300px">
+<img src="/images/gaeul.jpeg" width="300px" height="300px">
 
 #### 고가을 (팀장)
 - email : gaeulgo2@gmail.com
