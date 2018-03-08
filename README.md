@@ -2,13 +2,6 @@
 
 2018년도 캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.
 
-## 팀소개 및 페이지를 꾸며주세요.
-
-- readme.md 수정.
-
-- index.md 예시보고 수정.
-
-- 수정후 팀페이지 확인하여 점검.
 
 ```
 **팀페이지 주소**
@@ -25,14 +18,14 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 2. 소개 영상
 
-프로젝트 소개하는 영상을 추가하세요
+- url : 
 
 ### 3. 팀 소개
 
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
 
 #### 고가을 (팀장)
-- email:gaeulgo2@gmail.com
+- email : gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
 
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
