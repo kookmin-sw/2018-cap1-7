@@ -13,25 +13,25 @@
 ## 2. 팀 소개
 - SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.
 
-<img src="/2018-cap1-7/images/gaeul.jpeg" width="300px" height="300px">
+![Alt text](/images/gaeul.jpeg)
 
 #### 고가을 (팀장)
 - email : gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
 
-<img src="/2018-cap1-7/images/yealynn.jpeg" width="300px" height="300px">
+![Alt text](/images/yealynn.jpeg)
 
 #### 김예린
 - email : ylynnkim@gmail.com
 - facebook : https://www.facebook.com/yealynn.kim 
 
-<img src="/2018-cap1-7/images/sungho.jpeg" width="300px" height="400px">
+![Alt text](/images/sungho.jpeg)
 
 #### 류성호
 - email : kalim55555@gmail.com
 - facebook : https://www.facebook.com/profile.php?id=100002293450549
 
-<img src="/2018-cap1-7/images/seungwoo.jpeg" width="300px" height="400px">
+![Alt text](/images/seungwoo.jpeg)
 
 #### 정승우
 - email : tmddnnim2da@gmail.com
