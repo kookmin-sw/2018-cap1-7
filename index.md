@@ -9,7 +9,6 @@
 
 - 이러한 지정된 상황을 농아인이 인지할 수 있도록 하여 위급상황을 대비할 수 있게 하고 음성 지시에 대한 적절한 반응을 할 수 있도록 돕는다.
 
-* * * 
 
 ## 2. 팀 소개
 - SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.
@@ -38,7 +37,6 @@
 - email : tmddnnim2da@gmail.com
 - facebook : https://www.facebook.com/seungwoo.jeong.75
 
-* * *
 
 ## 3. Abstract 
 
@@ -48,12 +46,10 @@ It wears like a pair of glasses, recognizes the surrounding sounds, and displays
 
 In addition, the user recognizes the gesture of the user through the camera module, searches the DB based on the analyzed contents, and transmits a corresponding sentence to the speaker, which allows the user to say "Thank you", "See you again next time" It reproduces the words that the user needs.
 
-* * *
 
 ## 4. UseCase Diagram
 ![Alt text](/images/usecase.png)
 
-* * *
 
 ## 5. 소개영상
 
