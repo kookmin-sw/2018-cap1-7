@@ -28,7 +28,7 @@ https://kookmin-sw.github.io/2018-cap1-7
 프로젝트 소개하는 영상을 추가하세요
 
 ### 3. 팀 소개
-![Image](./images/gaeul.jpeg "gaeul"){: width="20px" height="100px"}
+![Image](./images/gaeul.jpeg "gaeul" =100x20)
 ![Alt text](images/gaeul.jpeg "gaeul"){: width="100" height="100"}
 ![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
 ![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
