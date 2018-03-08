@@ -1,14 +1,13 @@
 # Welcome to VIEWTIFUL 
 
-<img src="/images/logo.png" width="300px" height="300px">
+<center><img src="/images/logo.png" width="200px" height="200px"></center>
 
-2018년도 캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.
+<center>2018년도 캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.</center>
 
 
 ```
-**팀페이지 주소**
-- 7조
-- url : https://kookmin-sw.github.io/2018-cap1-7
+**Viewtiful 팀페이지 주소**
+https://kookmin-sw.github.io/2018-cap1-7
 ```
 
 
