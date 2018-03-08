@@ -1,6 +1,6 @@
 # Welcome to GitHub
 
-캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.
+2018년도 캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.
 
 ## 팀소개 및 페이지를 꾸며주세요.
 
@@ -29,8 +29,8 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 3. 팀 소개
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
-**고가을** (팀장)
--email : gaeulgo2@gmail.com
+** 고가을 ** (팀장)
+-email:gaeulgo2@gmail.com
 -facebook : https://www.facebook.com/go.gaeul
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
 **김예린** 
@@ -41,7 +41,7 @@ https://kookmin-sw.github.io/2018-cap1-7
 -email : kalim55555@gmail.com
 -facebook : https://www.facebook.com/profile.php?id=100002293450549
 <img src="/images/seungwoo.jpeg" width="300px" height="400px">
--**정승우**
+**정승우**
 -email : tmddnnim2da@gmail.com
 -facebook : https://www.facebook.com/seungwoo.jeong.75
 
