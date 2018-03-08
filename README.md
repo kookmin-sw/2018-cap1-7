@@ -10,11 +10,11 @@
 
 - 수정후 팀페이지 확인하여 점검.
 
-'''
+```
 **팀페이지 주소**
 7조
 https://kookmin-sw.github.io/2018-cap1-7
-'''
+```
 
 
 ### 1. 프로잭트 소개
@@ -28,15 +28,14 @@ https://kookmin-sw.github.io/2018-cap1-7
 프로젝트 소개하는 영상을 추가하세요
 
 ### 3. 팀 소개
-```
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
 - **고가을** (팀장)
 - email:gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
 - **김예린** 
--email : ylynnkim@gmail.com
--facebook : https://www.facebook.com/yealynn.kim 
+- email : ylynnkim@gmail.com
+- facebook : https://www.facebook.com/yealynn.kim 
 <img src="/images/sungho.jpeg" width="300px" height="400px">
 - **류성호**
 -email : kalim55555@gmail.com
@@ -45,7 +44,6 @@ https://kookmin-sw.github.io/2018-cap1-7
 - **정승우**
 -email : tmddnnim2da@gmail.com
 -facebook : https://www.facebook.com/seungwoo.jeong.75
-```
 
 
 
