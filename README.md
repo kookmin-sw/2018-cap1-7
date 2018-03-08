@@ -1,6 +1,6 @@
 # Welcome to VIEWTIFUL 
 
-<center><img src="/images/logo.png" width="200px" height="200px"></center>
+<center><img src="/images/logo.png" width="600px" height="200px"></center>
 
 <center>2018년도 캡스톤 7조, Viewtiful 팀에 오신 것을 환영합니다.</center>
 
