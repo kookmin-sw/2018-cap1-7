@@ -28,12 +28,23 @@ https://kookmin-sw.github.io/2018-cap1-7
 프로젝트 소개하는 영상을 추가하세요
 
 ### 3. 팀 소개
-<img src="/images/gaeul.jpeg" width="100px" height="100px">
-![Image](./images/gaeul.jpeg =100x20)
-![Alt text](images/gaeul.jpeg "gaeul"){: width="100" height="100"}
-![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
-![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
-![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
+<img src="/images/gaeul.jpeg" width="300px" height="300px">
+- **고가을** (팀장)
+- email : gaeulgo2@gmail.com
+- facebook : https://www.facebook.com/go.gaeul
+<img src="/images/yealynn.jpeg" width="300px" height="300px">
+- **김예린** 
+- email : ylynnkim@gmail.com
+- facebook : https://www.facebook.com/yealynn.kim 
+<img src="/images/sungho.jpeg" width="300px" height="300px">
+- **류성호**
+- email : kalim55555@gmail.com
+- facebook : https://www.facebook.com/profile.php?id=100002293450549
+<img src="/images/seungwoo.jpeg" width="300px" height="300px">
+- **정승우**
+- email : tmddnnim2da@gmail.com
+- facebook : https://www.facebook.com/seungwoo.jeong.75
+
 
 
 ### 4. 사용법
