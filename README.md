@@ -35,6 +35,9 @@ https://kookmin-sw.github.io/2018-cap1-7
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
 
 #### 김예린
+- **김예린** 
+- email : ylynnkim@gmail.com
+- facebook : https://www.facebook.com/yealynn.kim 
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
 - **김예린** 
 - email : ylynnkim@gmail.com
