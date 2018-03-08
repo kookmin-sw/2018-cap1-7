@@ -29,7 +29,7 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 3. 팀 소개
 
-![Alt text](images/gaeul.jpeg "gaeul")
+![Alt text](images/gaeul.jpeg "gaeul"){: width="100" height="100"}
 ![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
 ![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
 ![Alt text](../images/SV_experience/180110/yelp.jpeg "yelp logo")
