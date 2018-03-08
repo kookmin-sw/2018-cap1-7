@@ -52,7 +52,7 @@ In addition, the user recognizes the gesture of the user through the camera modu
 
 
 ## 5. 소개영상
-- url : 
+- url : <https://youtu.be/vvMqBLz37LQ>
 
 ## 6. 결과영상
 - url : 
