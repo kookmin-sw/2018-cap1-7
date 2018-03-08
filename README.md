@@ -30,22 +30,22 @@ https://kookmin-sw.github.io/2018-cap1-7
 ### 3. 팀 소개
 '''
 <img src="/images/gaeul.jpeg" width="300px" height="300px">
-**고가을** (팀장)
+- **고가을** (팀장)
 - email:gaeulgo2@gmail.com
 - facebook : https://www.facebook.com/go.gaeul
-'''
 <img src="/images/yealynn.jpeg" width="300px" height="300px">
-**김예린** 
+- **김예린** 
 -email : ylynnkim@gmail.com
 -facebook : https://www.facebook.com/yealynn.kim 
 <img src="/images/sungho.jpeg" width="300px" height="400px">
-**류성호**
+- **류성호**
 -email : kalim55555@gmail.com
 -facebook : https://www.facebook.com/profile.php?id=100002293450549
 <img src="/images/seungwoo.jpeg" width="300px" height="400px">
-**정승우**
+- **정승우**
 -email : tmddnnim2da@gmail.com
 -facebook : https://www.facebook.com/seungwoo.jeong.75
+'''
 
 
 
