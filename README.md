@@ -12,14 +12,12 @@
 
 **팀페이지 주소**
 7조
-https://kookmin-sw.github.io/2018-cap-7
+https://kookmin-sw.github.io/2018-cap1-7
 
-
-## readme파일에 아래와 같은 내용들을 추가하세요.
 
 ### 1. 프로잭트 소개
 
-프로젝트
+
 
 ### 2. 소개 영상
 
