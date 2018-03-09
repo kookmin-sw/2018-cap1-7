@@ -19,7 +19,7 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 2. 소개 영상
 
-<img src="/images/youtube.png" width="300px" height="700px">
+<img src="/images/youtube.png" width="700px" height="300px">
 
 - url : https://youtu.be/vvMqBLz37LQ
 - 위 링크를 클릭하시면 프로젝트 소개 영상을 보실 수 있습니다. 
