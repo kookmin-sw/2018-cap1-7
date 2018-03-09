@@ -19,7 +19,10 @@ https://kookmin-sw.github.io/2018-cap1-7
 
 ### 2. 소개 영상
 
+<img src="/images/youtube.png" width="300px" height="700px">
+
 - url : https://youtu.be/vvMqBLz37LQ
+- 위 링크를 클릭하시면 프로젝트 소개 영상을 보실 수 있습니다. 
 
 ### 3. 팀 소개
 - SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.
