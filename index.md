@@ -11,36 +11,36 @@
 
 
 ## 2. 팀 소개
-- SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.
+**SoundView를 개발하는 Viewtiful은 총 4명의 학부생으로 이루어져 있습니다.**
 
-<img src="/images/gaeul.jpeg" width="300px" height="300px">
+![Alt text](/images/gaeul.jpeg)
 
 #### 고가을 (팀장)
-- email : gaeulgo2@gmail.com
-- facebook : https://www.facebook.com/go.gaeul
+- **email** : gaeulgo2@gmail.com
+- **facebook** : <https://www.facebook.com/go.gaeul>
 
-<img src="/images/yealynn.jpeg" width="300px" height="300px">
+![Alt text](/images/yealynn.jpeg)
 
 #### 김예린
-- email : ylynnkim@gmail.com
-- facebook : https://www.facebook.com/yealynn.kim 
+- **email** : ylynnkim@gmail.com
+- **facebook** : <https://www.facebook.com/yealynn.kim> 
 
-<img src="/images/sungho.jpeg" width="300px" height="400px">
+![Alt text](/images/sungho.jpeg)
 
 #### 류성호
-- email : kalim55555@gmail.com
-- facebook : https://www.facebook.com/profile.php?id=100002293450549
+- **email** : kalim55555@gmail.com
+- **facebook** : <https://www.facebook.com/profile.php?id=100002293450549>
 
-<img src="/images/seungwoo.jpeg" width="300px" height="400px">
+![Alt text](/images/seungwoo.jpeg)
 
 #### 정승우
-- email : tmddnnim2da@gmail.com
-- facebook : https://www.facebook.com/seungwoo.jeong.75
+- **email** : tmddnnim2da@gmail.com
+- **facebook** : <https://www.facebook.com/seungwoo.jeong.75>
 
 
 ## 3. Abstract 
 
-***'SoundView'*** has the meaning of 'eyes before eyes' and it is smart glasses that are designed to detect the dangerous situation of hearing-impaired people and to communicate their coping intention to the public more quickly and conveniently.
+**'SoundView'** has the meaning of 'eyes before eyes' and it is smart glasses that are designed to detect the dangerous situation of hearing-impaired people and to communicate their coping intention to the public more quickly and conveniently.
 
 It wears like a pair of glasses, recognizes the surrounding sounds, and displays the recognized contents on a transparent display so that you can immediately react to the sound. It uses a microphone module attached to the glasses to recognize the sound, analyzes the sound from the server, and provides information about the sound through the transparent display.
 
@@ -52,7 +52,7 @@ In addition, the user recognizes the gesture of the user through the camera modu
 
 
 ## 5. 소개영상
-- url : 
+- url : <https://youtu.be/vvMqBLz37LQ>
 
 ## 6. 결과영상
 - url : 
