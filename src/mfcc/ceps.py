@@ -16,6 +16,34 @@ from scikits.talkbox.features import mfcc
 
 from utils import GENRE_DIR
 
+import librosa
+
+
+def write_mfcc(ceps, fn):
+    """
+    Write the MFCC to separate files to speed up processing.
+    BY  LIBROSA
+    """
+    base_fn, ext = os.path.splitext(fn)
+    data_fn = base_fn + ".mfcc"
+    np.save(data_fn, ceps)
+    print("Written %s"%data_fn)
+
+
+def create_ceps(fn):
+    X, sample_rate = librosa.load(fn)
+    mfccs = librosa.feature.mfcc(y=X,
+                                 sr=sample_rate,
+                                 n_mfcc=1,
+                                 hop_length=int(sample_rate * 0.01),
+                                 n_fft=int(sample_rate * 0.02),
+                                 htk=True).T
+
+    write_mfcc(mfcc, fn)
+
+
+
+
 
 def write_ceps(ceps, fn):
     """
