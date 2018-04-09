@@ -11,11 +11,8 @@ from collections import defaultdict
 from sklearn.metrics import precision_recall_curve, roc_curve
 from sklearn.metrics import auc
 from sklearn.cross_validation import ShuffleSplit
-
 from sklearn.metrics import confusion_matrix
-
 from utils import plot_roc, plot_confusion_matrix, GENRE_LIST
-
 from ceps import read_ceps
 
 
