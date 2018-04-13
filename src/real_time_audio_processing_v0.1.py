@@ -12,13 +12,18 @@ p=pyaudio.PyAudio() # start the PyAudio class
 stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
 
-while True: #go for a few seconds
+while True: #go for infinite loop
+    # convet BufferdData(int) to String for knowing audio level value 
+    # steam.read(Slieced Data)
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
+    # Audio level meter -> peak average method
     peak=np.average(np.abs(data))*2
+    # visualize values by bars
     bars="#"*int(50*peak/2**16)
-    print("%04d %s"%(peak,bars))
+    print("%04d %s"%(peak,bars)) # output 
 
-stream.stop_stream()
-stream.close()
+# stop stream
+stream.stop_stream()  
+stream.close()      
 p.terminate()
 
