@@ -1,11 +1,9 @@
 
 # coding: utf-8
 
-# In[2]:
-
 
 # sample 
-import pyaudio
+import pyaudio   #
 import numpy as np
 
 CHUNK = 2**11
