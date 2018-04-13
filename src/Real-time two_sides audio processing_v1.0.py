@@ -1,7 +1,4 @@
-
 # coding: utf-8
-
-# In[23]:
 
 
 import pyaudio
