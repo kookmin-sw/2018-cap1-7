@@ -12,7 +12,7 @@ p=pyaudio.PyAudio() # start the PyAudio class
 stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
 
-while True: #go for infinite loop
+while True: # go for infinite loop
     # convet BufferdData(int) to String for knowing audio level value 
     # steam.read(Slieced Data)
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
