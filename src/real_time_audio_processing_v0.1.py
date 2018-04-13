@@ -1,17 +1,16 @@
-
 # coding: utf-8
 
-
-# sample 
-import pyaudio   #
+# import audio_processing module in python 
+import pyaudio  
 import numpy as np
 
-CHUNK = 2**11
-RATE = 44100
+CHUNK = 2**11 # number of data points to read at a time --> buffr로
+RATE = 44100  # time resolution of the recoding device(mic module) -- 44Kbyte(Hz) 
 
-p=pyaudio.PyAudio()
+p=pyaudio.PyAudio() # start the PyAudio class
+# convert analog signal to digital signal(Int16) (uses default input device)  
 stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
-              frames_per_buffer=CHUNK)
+              frames_per_buffer=CHUNK) 
 
 while True: #go for a few seconds
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
