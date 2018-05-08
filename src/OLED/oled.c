@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
+// GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
 
 #define byte  unsigned char
@@ -442,15 +443,15 @@ void Draw_BMP(byte bmp[])
 
 
 
-void main(void) 
+void main(int argc, char* argv[]) 
 {
   unsigned char i=0;    
-  wiringPiSetup();  
+  wiringPiSetup(); // initializes wiringPi ( pin Number 0 ~ 16) 
   pinMode(10, OUTPUT);
- pinMode(5, OUTPUT);
- pinMode(14, OUTPUT);
- pinMode(12, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(14, OUTPUT);
+  pinMode(12, OUTPUT);
   pinMode(6, OUTPUT); 
   LCD_Init();  
-  LCD_P6x8Str(0,2,"DFROBOT");
+  LCD_P6x8Str(0,2,argv[1]);
 }
