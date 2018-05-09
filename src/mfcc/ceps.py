@@ -42,9 +42,6 @@ def create_ceps(fn):
     write_mfcc(mfcc, fn)
 
 
-
-
-
 def write_ceps(ceps, fn):
     """
     Write the MFCC to separate files to speed up processing.
