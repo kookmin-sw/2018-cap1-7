@@ -23,7 +23,7 @@ for d in [DATA_DIR, CHART_DIR]:
 
 # Put your directory to the different music genres here
 GENRE_DIR = "/Users/zoey/workspace/capstone/2018-cap1-7/src/sounds"
-GENRE_LIST = ["dog", "gun", "car_horn", "]
+GENRE_LIST = ["dog", "gun", "car_horn", "scream", "dryer", "break" ]
 
 # Put your directory to the test dir here
 TEST_DIR = "/Users/zoey/workspace/capstone/lab/test"
