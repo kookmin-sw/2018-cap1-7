@@ -154,8 +154,8 @@ def listen_print_loop(responses):
 
         else:
             print(transcript + overwrite_chars)
-            a = 'test'
-            os.system('sudo ./textshow %s' %a)
+            text = transcript + overwrite_chars
+            os.system('sudo ./show %s' %text)
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
