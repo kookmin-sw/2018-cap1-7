@@ -1,9 +1,3 @@
-# This code is supporting material for the book
-# Building Machine Learning Systems with Python
-# by Willi Richert and Luis Pedro Coelho
-# published by PACKT Publishing
-#
-# It is made available under the MIT License
 import glob
 import os
 import numpy as np
@@ -127,20 +121,20 @@ if __name__ == "__main__":
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
 
-    sub_dir = raw_input("sub_dir : ")
-    fn ="*.ceps.npy"
+    while 1 :
 
-    af = read_files(fn,sub_dir)
+        sub_dir = raw_input("sub_dir : ")
+        fn ="*.ceps.npy"
 
-    arr_c = clfss.predict(af)
+        af = read_files(fn,sub_dir)
 
-    print("-----------------------")
-    print("-----------------------")
-    print(arr_c)
-    for i in arr_c :
-        print (genre_list[i])
-    print("-----------------------")
-    print("-----------------------")
+        arr_c = clfss.predict(af)
 
-    plot_confusion_matrix(cm_norm, genre_list, "ceps",
+        print("-----------------------")
+        print("-----------------------")
+        print (arr_c)
+        print("-----------------------")
+        print("-----------------------")
+
+        plot_confusion_matrix(cm_norm, genre_list, "ceps",
                           "Confusion matrix of a CEPS based classifier")

@@ -4,24 +4,18 @@
 # published by PACKT Publishing
 #
 # It is made available under the MIT License
-import glob
-import os
+
 import numpy as np
 from collections import defaultdict
 
 from sklearn.metrics import precision_recall_curve, roc_curve
 from sklearn.metrics import auc
 from sklearn.cross_validation import ShuffleSplit
-
 from sklearn.metrics import confusion_matrix
-
-from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR
-
-from ceps import read_ceps
-
+from utils import plot_pr, plot_roc, plot_confusion_matrix, GENRE_LIST
+from fft import read_fft
 
 genre_list = GENRE_LIST
-genre_dir = GENRE_DIR
 
 
 def train_model(clf_factory, X, Y, name, plot=False):
@@ -45,11 +39,12 @@ def train_model(clf_factory, X, Y, name, plot=False):
     clfs = []  # just to later get the median
 
     cms = []
+
     for train, test in cv:
         X_train, y_train = X[train], Y[train]
         X_test, y_test = X[test], Y[test]
-        clf = clf_factory()
 
+        clf = clf_factory()
         clf.fit(X_train, y_train)
         clfs.append(clf)
 
@@ -61,9 +56,7 @@ def train_model(clf_factory, X, Y, name, plot=False):
         test_errors.append(1 - test_score)
 
         y_pred = clf.predict(X_test)
-
         cm = confusion_matrix(y_test, y_pred)
-
         cms.append(cm)
 
         for label in labels:
@@ -90,15 +83,17 @@ def train_model(clf_factory, X, Y, name, plot=False):
             median = np.argsort(scores_to_sort)[len(scores_to_sort) / 2]
 
             desc = "%s %s" % (name, genre_list[label])
-      #      plot_roc(roc_scores[label][median], desc, tprs[label][median],
-       #              fprs[label][median], label='%s vs rest' % genre_list[label])
+            plot_pr(pr_scores[label][median], desc, precisions[label][median],
+                    recalls[label][median], label='%s vs rest' % genre_list[label])
+            plot_roc(roc_scores[label][median], desc, tprs[label][median],
+                     fprs[label][median], label='%s vs rest' % genre_list[label])
 
     all_pr_scores = np.asarray(pr_scores.values()).flatten()
     summary = (np.mean(scores), np.std(scores),
                np.mean(all_pr_scores), np.std(all_pr_scores))
     print("%.3f\t%.3f\t%.3f\t%.3f\t" % summary)
 
-    return np.mean(train_errors), np.mean(test_errors), np.asarray(cms), clf
+    return np.mean(train_errors), np.mean(test_errors), np.asarray(cms)
 
 
 def create_model():
@@ -107,40 +102,15 @@ def create_model():
 
     return clf
 
-def read_files(fn, genre, base_dir=genre_dir ):
-    X = []
-    for fn in glob.glob(os.path.join(base_dir, genre, fn)):
-        ceps = np.load(fn)
-        num_ceps = len(ceps)
-        X.append(
-            np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
-
-    return np.array(X)
-
 
 if __name__ == "__main__":
-    X, y = read_ceps(genre_list)
+    X, y = read_fft(genre_list)
 
-    train_avg, test_avg, cms ,clfss= train_model(
-        create_model, X, y, "Log Reg CEPS", plot=True)
+    train_avg, test_avg, cms = train_model(
+        create_model, X, y, "Log Reg FFT", plot=True)
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
 
-    sub_dir = raw_input("sub_dir : ")
-    fn ="*.ceps.npy"
-
-    af = read_files(fn,sub_dir)
-
-    arr_c = clfss.predict(af)
-
-    print("-----------------------")
-    print("-----------------------")
-    print(arr_c)
-    for i in arr_c :
-        print (genre_list[i])
-    print("-----------------------")
-    print("-----------------------")
-
-    plot_confusion_matrix(cm_norm, genre_list, "ceps",
-                          "Confusion matrix of a CEPS based classifier")
+    plot_confusion_matrix(cm_norm, genre_list, "fft",
+                          "Confusion matrix of an FFT based classifier")
