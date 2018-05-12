@@ -127,7 +127,7 @@ if __name__ == "__main__":
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
 
-    #특정 파일 판단
+    #
     sub_dir = raw_input("sub_dir : ")
     fn = raw_input("file_name : ")+".ceps.npy"
 
