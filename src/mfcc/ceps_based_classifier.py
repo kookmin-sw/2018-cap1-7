@@ -127,15 +127,20 @@ if __name__ == "__main__":
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
 
-    #
     sub_dir = raw_input("sub_dir : ")
-    fn = raw_input("file_name : ")+".ceps.npy"
+    fn ="*.ceps.npy"
 
     af = read_files(fn,sub_dir)
 
     arr_c = clfss.predict(af)
 
-    print arr_c
+    print("-----------------------")
+    print("-----------------------")
+    print(arr_c)
+    for i in arr_c :
+        print (genre_list[i])
+    print("-----------------------")
+    print("-----------------------")
 
     plot_confusion_matrix(cm_norm, genre_list, "ceps",
                           "Confusion matrix of a CEPS based classifier")

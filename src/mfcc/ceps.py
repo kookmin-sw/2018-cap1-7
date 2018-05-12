@@ -17,7 +17,6 @@ from scikits.talkbox.features import mfcc
 from utils import GENRE_DIR
 
 
-
 def write_ceps(ceps, fn):
     """
     Write the MFCC to separate files to speed up processing.
@@ -47,7 +46,6 @@ def read_ceps(genre_list, base_dir=GENRE_DIR):
             y.append(label)
 
     return np.array(X), np.array(y)
-
 
 if __name__ == "__main__":
     os.chdir(GENRE_DIR)
