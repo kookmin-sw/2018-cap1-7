@@ -22,12 +22,11 @@ for d in [DATA_DIR, CHART_DIR]:
         os.mkdir(d)
 
 # Put your directory to the different music genres here
-GENRE_DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds"
-GENRE_LIST = ["dog", "gun","dryer","car_horn","break","scream"]
-
+GENRE_DIR = "/Users/zoey/workspace/capstone/lab/sounds"
+GENRE_LIST = ["dog", "gun","scream","car_horn","dryer","break"]
 
 # Put your directory to the test dir here
-TEST_DIR = "C:\Users\lynn\PycharmProjects\BuildingMachineLearningSystemsWithPython-master\ch09\sounds"
+TEST_DIR = "/Users/zoey/workspace/capstone/lab/test"
 
 if GENRE_DIR is None or TEST_DIR is None:
     print("Please set GENRE_DIR and TEST_DIR in utils.py")
