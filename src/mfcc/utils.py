@@ -22,8 +22,10 @@ for d in [DATA_DIR, CHART_DIR]:
         os.mkdir(d)
 
 # Put your directory to the different music genres here
-GENRE_DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds"
+GENRE_DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds2"
 GENRE_LIST = ["dog", "gun","dryer","car_horn","break","scream"]
+
+WAV_DIR= "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\saveTowav"
 
 
 # Put your directory to the test dir here

@@ -1,6 +1,12 @@
 import glob
 import os
 import numpy as np
+import sys
+
+import scipy
+import scipy.io.wavfile
+from scikits.talkbox.features import mfcc
+
 from collections import defaultdict
 
 from sklearn.metrics import precision_recall_curve, roc_curve
@@ -9,7 +15,7 @@ from sklearn.cross_validation import ShuffleSplit
 
 from sklearn.metrics import confusion_matrix
 
-from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR
+from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR, WAV_DIR
 
 from ceps import read_ceps
 
@@ -112,6 +118,20 @@ def read_files(fn, genre, base_dir=genre_dir ):
     return np.array(X)
 
 
+
+
+def create_ceps(fn):
+    sample_rate, X = scipy.io.wavfile.read(fn)
+
+    ceps, mspec, spec = mfcc(X)
+
+    #base_fn, ext = os.path.splitext(fn)
+    #data_fn = base_fn + ".ceps"
+    #np.save(data_fn, ceps)
+    #print("Written %s"%data_fn)
+    return ceps
+
+
 if __name__ == "__main__":
     X, y = read_ceps(genre_list)
 
@@ -120,19 +140,19 @@ if __name__ == "__main__":
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
-
+    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds2"
     while 1 :
-
-        sub_dir = raw_input("sub_dir : ")
-        fn ="*.ceps.npy"
-
-        af = read_files(fn,sub_dir)
-
-        arr_c = clfss.predict(af)
+        os.chdir(DIR)
+        glob_wav = os.path.join(sys.argv[1], "*.wav")
+        print(glob_wav)
+        print("-----------------------")
+        for fn in glob.glob(glob_wav):
+            af = create_ceps(glob_wav)
+            arr_c = clfss.predict(af)
+            print (arr_c)
 
         print("-----------------------")
         print("-----------------------")
-        print (arr_c)
         print("-----------------------")
         print("-----------------------")
 
