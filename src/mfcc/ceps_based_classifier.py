@@ -138,7 +138,9 @@ if __name__ == "__main__":
 
     print("-----------------------")
     print("-----------------------")
-    print (arr_c)
+    print(arr_c)
+    for i in arr_c :
+        print (genre_list[i])
     print("-----------------------")
     print("-----------------------")
 

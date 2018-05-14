@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
 # This code is supporting material for the book
 # Building Machine Learning Systems with Python
 # by Willi Richert and Luis Pedro Coelho
@@ -22,11 +24,18 @@ for d in [DATA_DIR, CHART_DIR]:
         os.mkdir(d)
 
 # Put your directory to the different music genres here
-GENRE_DIR = "C:\Users\lynn\PycharmProjects\BuildingMachineLearningSystemsWithPython-master\ch09\sounds"
-GENRE_LIST = ["dog", "gun"]
+
+# GENRE_DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds2"
+
+WAV_DIR= "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\saveTowav"
+
+GENRE_DIR = "/home/viewtiful/바탕화면/2018-cap1-7/src"
+GENRE_LIST = ["dog", "gun","dryer","car_horn","break","scream"]
+
+
 
 # Put your directory to the test dir here
-TEST_DIR = "C:\Users\lynn\PycharmProjects\BuildingMachineLearningSystemsWithPython-master\ch09\sounds\dog\test"
+TEST_DIR = "C:\Users\lynn\PycharmProjects\BuildingMachineLearningSystemsWithPython-master\ch09\sounds"
 
 if GENRE_DIR is None or TEST_DIR is None:
     print("Please set GENRE_DIR and TEST_DIR in utils.py")
