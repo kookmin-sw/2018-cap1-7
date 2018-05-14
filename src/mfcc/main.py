@@ -16,7 +16,7 @@ from sklearn.cross_validation import ShuffleSplit
 
 from sklearn.metrics import confusion_matrix
 
-from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR
+from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR, WAV_DIR
 
 from ceps import read_ceps
 
@@ -144,8 +144,13 @@ if __name__ == "__main__":
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
+
+    plot_confusion_matrix(cm_norm, genre_list, "ceps",
+                          "Confusion matrix of a CEPS based classifier")
+
     DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
     while wavfile_num != 10 :
+
         make_wav("file", wavfile_num)
         os.chdir(DIR)
         glob_wav = os.path.join(sys.argv[1], wavfile_name+str(wavfile_num)+".wav")
@@ -155,10 +160,8 @@ if __name__ == "__main__":
             af = create_ceps(glob_wav)
             arr_c = clfss.predict(af)
             print (arr_c)
-
         print("-----------------------")
         print("-----------------------")
 
-        plot_confusion_matrix(cm_norm, genre_list, "ceps",
-                          "Confusion matrix of a CEPS based classifier")
         wavfile_num += 1
+
