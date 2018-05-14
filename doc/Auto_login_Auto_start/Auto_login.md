@@ -1,4 +1,4 @@
-Auto Login
+###Auto Login
 
 Step 1: Open a terminal session and edit inittab file.
 	
