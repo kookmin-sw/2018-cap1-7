@@ -53,4 +53,3 @@ if __name__ == "__main__":
     print(glob_wav)
     for fn in glob.glob(glob_wav):
         create_ceps(fn)
-

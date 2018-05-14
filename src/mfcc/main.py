@@ -149,7 +149,8 @@ if __name__ == "__main__":
                           "Confusion matrix of a CEPS based classifier")
 
     DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
-    while 1 :
+    while wavfile_num != 10 :
+
         make_wav("file", wavfile_num)
         os.chdir(DIR)
         glob_wav = os.path.join(sys.argv[1], wavfile_name+str(wavfile_num)+".wav")
@@ -163,3 +164,4 @@ if __name__ == "__main__":
         print("-----------------------")
 
         wavfile_num += 1
+
