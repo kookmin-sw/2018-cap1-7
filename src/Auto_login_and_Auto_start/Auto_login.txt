@@ -16,6 +16,6 @@ Step 3: Add login program to inittab.
 Step 4: Save and Exit.
 Press Ctrl+X to exit nano editor followed by Y to save the file and then press Enter to confirm the filename.
 
-¶Ç´Â ¶óÁîº£¸®ÆÄÀÌ3 ¿¡¼­´Â ¸í·É¾î ÇÑ ÁÙ·Î À§ÀÇ °úÁ¤ÀÌ »ý·« °¡´É 
+ë˜ëŠ” ë¼ì¦ˆë² ë¦¬íŒŒì´3 ì—ì„œëŠ” ëª…ë ¹ì–´ í•œ ì¤„ë¡œ ìœ„ì˜ ê³¼ì •ì´ ìƒëžµ ê°€ëŠ¥ 
 
 $sudo raspi-config > 3. Boot Options > B2. Console Autologin 
