@@ -5,6 +5,7 @@ import sys
 
 import scipy
 import scipy.io.wavfile
+
 from scikits.talkbox.features import mfcc
 
 from collections import defaultdict
@@ -19,6 +20,7 @@ from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR, WAV_DI
 
 from ceps import read_ceps
 
+from save import make_wav
 
 genre_list = GENRE_LIST
 genre_dir = GENRE_DIR
@@ -133,6 +135,8 @@ def create_ceps(fn):
 
 
 if __name__ == "__main__":
+    wavfile_num = 0
+    wavfile_name = "file"
     X, y = read_ceps(genre_list)
 
     train_avg, test_avg, cms ,clfss= train_model(
@@ -140,21 +144,22 @@ if __name__ == "__main__":
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
-    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds2"
+
+    plot_confusion_matrix(cm_norm, genre_list, "ceps",
+                          "Confusion matrix of a CEPS based classifier")
+
+    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
     while 1 :
+        make_wav("file", wavfile_num)
         os.chdir(DIR)
-        glob_wav = os.path.join(sys.argv[1], "*.wav")
+        glob_wav = os.path.join(sys.argv[1], wavfile_name+str(wavfile_num)+".wav")
         print(glob_wav)
         print("-----------------------")
         for fn in glob.glob(glob_wav):
             af = create_ceps(glob_wav)
             arr_c = clfss.predict(af)
             print (arr_c)
-
-        print("-----------------------")
-        print("-----------------------")
         print("-----------------------")
         print("-----------------------")
 
-        plot_confusion_matrix(cm_norm, genre_list, "ceps",
-                          "Confusion matrix of a CEPS based classifier")
+        wavfile_num += 1
