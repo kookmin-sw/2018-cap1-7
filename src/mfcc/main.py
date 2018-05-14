@@ -1,6 +1,13 @@
 import glob
 import os
 import numpy as np
+import sys
+
+import scipy
+import scipy.io.wavfile
+
+from scikits.talkbox.features import mfcc
+
 from collections import defaultdict
 
 from sklearn.metrics import precision_recall_curve, roc_curve
@@ -13,6 +20,7 @@ from utils import plot_roc, plot_confusion_matrix, GENRE_LIST, GENRE_DIR
 
 from ceps import read_ceps
 
+from save import make_wav
 
 genre_list = GENRE_LIST
 genre_dir = GENRE_DIR
@@ -112,7 +120,23 @@ def read_files(fn, genre, base_dir=genre_dir ):
     return np.array(X)
 
 
+
+
+def create_ceps(fn):
+    sample_rate, X = scipy.io.wavfile.read(fn)
+
+    ceps, mspec, spec = mfcc(X)
+
+    #base_fn, ext = os.path.splitext(fn)
+    #data_fn = base_fn + ".ceps"
+    #np.save(data_fn, ceps)
+    #print("Written %s"%data_fn)
+    return ceps
+
+
 if __name__ == "__main__":
+    wavfile_num = 0
+    wavfile_name = "file"
     X, y = read_ceps(genre_list)
 
     train_avg, test_avg, cms ,clfss= train_model(
@@ -120,21 +144,21 @@ if __name__ == "__main__":
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
-
-    while 1 :
-
-        sub_dir = raw_input("sub_dir : ")
-        fn ="*.ceps.npy"
-
-        af = read_files(fn,sub_dir)
-
-        arr_c = clfss.predict(af)
-
+    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
+    while wavfile_num != 10 :
+        make_wav("file", wavfile_num)
+        os.chdir(DIR)
+        glob_wav = os.path.join(sys.argv[1], wavfile_name+str(wavfile_num)+".wav")
+        print(glob_wav)
         print("-----------------------")
-        print("-----------------------")
-        print (arr_c)
+        for fn in glob.glob(glob_wav):
+            af = create_ceps(glob_wav)
+            arr_c = clfss.predict(af)
+            print (arr_c)
+
         print("-----------------------")
         print("-----------------------")
 
         plot_confusion_matrix(cm_norm, genre_list, "ceps",
                           "Confusion matrix of a CEPS based classifier")
+        wavfile_num += 1
