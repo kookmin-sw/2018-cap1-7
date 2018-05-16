@@ -17,7 +17,9 @@ def make_wav(name="file",num=0):
                         channels=CHANNELS,
                         rate=RATE,
                         input=True,
-                        input_device_index=2,
+
+                      #  input_device_index=2,
+
                         frames_per_buffer=CHUNK)
 
     print "recording..."
@@ -50,3 +52,4 @@ if __name__ == "__main__":
     while 20 :
         make_wav(wavfile_name,wavfile_num)
         wavfile_num+=1
+
