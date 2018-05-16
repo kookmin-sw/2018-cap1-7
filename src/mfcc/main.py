@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+
 import glob
 import os
 import numpy as np
@@ -76,10 +79,9 @@ if __name__ == "__main__":
     wavfile_name = "file"
     X, y = read_ceps(genre_list)
 
-    train_avg,clfss =train_model(
-            create_model, X, y)
-
-    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
+    train_avg,clfss =train_model(create_model, X, y)
+    DIR = "/home/viewtiful/2018-cap1-7/src/sounds"
+#    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     sub_dir = raw_input("sub_dir : ")
     fn ="*.ceps.npy"

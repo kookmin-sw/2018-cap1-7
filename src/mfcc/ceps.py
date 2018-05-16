@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+
 # This code is supporting material for the book
 # Building Machine Learning Systems with Python
 # by Willi Richert and Luis Pedro Coelho
