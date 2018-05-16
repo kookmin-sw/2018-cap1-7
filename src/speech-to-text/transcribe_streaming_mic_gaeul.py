@@ -30,6 +30,7 @@ from __future__ import division
 
 import re
 import sys
+import os
 
 from google.cloud import speech
 from google.cloud.speech import enums
