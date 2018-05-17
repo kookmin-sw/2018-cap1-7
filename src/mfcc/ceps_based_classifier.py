@@ -25,16 +25,16 @@ genre_dir = GENRE_DIR
 
 
 def train_model(clf_factory, X, Y, name, plot=False):
-    labels = np.unique(Y)
+    labels = np.unique(Y) #
 
-    cv = ShuffleSplit(
+    cv = ShuffleSplit( #
         n=len(X), n_iter=1, test_size=0.3, indices=True, random_state=0)
 
     train_errors = []
     test_errors = []
 
     scores = []
-    pr_scores = defaultdict(list)
+    pr_scores = defaultdict(list) #
     precisions, recalls, thresholds = defaultdict(
         list), defaultdict(list), defaultdict(list)
 
@@ -54,8 +54,10 @@ def train_model(clf_factory, X, Y, name, plot=False):
         clfs.append(clf)
 
         train_score = clf.score(X_train, y_train)
+        print(train_score);
         test_score = clf.score(X_test, y_test)
         scores.append(test_score)
+        print(test_score)
 
         train_errors.append(1 - train_score)
         test_errors.append(1 - test_score)
