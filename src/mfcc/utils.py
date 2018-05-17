@@ -27,15 +27,15 @@ for d in [DATA_DIR, CHART_DIR]:
 
 # GENRE_DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\sounds2"
 
-WAV_DIR= "C\Users\lynn\PycharmProjects\\2018-cap1-7\src\saveTowav"
+WAV_DIR= "/home/viewtiful/2018-cap1-7/src/sounds"
 
-GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/sounds"
+GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/new_sounds"
 GENRE_LIST = ["dog", "gun","dryer","car_horn","break","scream"]
 
 
 
 # Put your directory to the test dir here
-TEST_DIR = "C:\Users\lynn\PycharmProjects\BuildingMachineLearningSystemsWithPython-master\ch09\sounds"
+TEST_DIR = "/home/viewtiful/2018-cap1-7/src/sounds"
 
 if GENRE_DIR is None or TEST_DIR is None:
     print("Please set GENRE_DIR and TEST_DIR in utils.py")
