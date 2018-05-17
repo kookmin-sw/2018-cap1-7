@@ -29,7 +29,6 @@ genre_list = GENRE_LIST
 genre_dir = GENRE_DIR
 
 
-
 def train_model(clf_factory, X, Y):
     train_errors = []
 
@@ -44,7 +43,7 @@ def train_model(clf_factory, X, Y):
 
     train_errors.append(1 - train_score)
 
-    return np.mean(train_errors),  clf
+    return np.mean(train_errors), clf
 
 
 def create_model():
@@ -53,7 +52,7 @@ def create_model():
 
     return clf
 
-def read_files(fn, base_dir=genre_dir ):
+def read_files(fn, base_dir=genre_dir):
     X = []
     for fn in glob.glob(os.path.join(base_dir, fn)):
         ceps = np.load(fn)
@@ -64,9 +63,7 @@ def read_files(fn, base_dir=genre_dir ):
     return np.array(X)
 
 
-
 def create_ceps(fn):
-
     sample_rate, X = scipy.io.wavfile.read(fn)
     ceps, mspec, spec = mfcc(X)
     return ceps
@@ -78,23 +75,23 @@ if __name__ == "__main__":
     wavfile_num = 0
     wavfile_name = "file"
     X, y = read_ceps(genre_list)
-    train_avg,clfss =train_model(create_model, X, y)
+    train_avg, clfss = train_model(create_model, X, y)
     DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/"
 
-#    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
+    #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
-    while 1 :
+    while 1:
         make_wav("file", wavfile_num)
-       	fn = DIR+"file"+str(wavfile_num)+".wav"
-        X=[]
+        fn = DIR + "file" + str(wavfile_num) + ".wav"
+        X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
+
         arr_c = clfss.predict(X)
         print(wavfile_num)
         print (arr_c)
-       
         print("-----------------------")
         print("-----------------------")
 
