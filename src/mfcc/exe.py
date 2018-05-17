@@ -147,6 +147,8 @@ if __name__ == "__main__":
 		for fn in glob.glob(glob_wav):
         	af = create_ceps(fn)
         	arr_c = clfss.predict(af)
+        	print arr_c
+        	
 		wavfile_num = wavfile_num + 1
 
 
