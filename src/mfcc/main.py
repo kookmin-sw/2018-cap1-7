@@ -88,6 +88,7 @@ if __name__ == "__main__":
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
+
         arr_c = clfss.predict(X)
         print(wavfile_num)
         print (arr_c)
@@ -96,3 +97,4 @@ if __name__ == "__main__":
         print("-----------------------")
 
         wavfile_num = wavfile_num + 1
+
