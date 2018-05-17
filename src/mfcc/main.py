@@ -52,7 +52,6 @@ def create_model():
 
     return clf
 
-
 def read_files(fn, base_dir=genre_dir):
     X = []
     for fn in glob.glob(os.path.join(base_dir, fn)):
@@ -68,6 +67,7 @@ def create_ceps(fn):
     sample_rate, X = scipy.io.wavfile.read(fn)
     ceps, mspec, spec = mfcc(X)
     return ceps
+
 
 
 if __name__ == "__main__":
@@ -92,9 +92,7 @@ if __name__ == "__main__":
         arr_c = clfss.predict(X)
         print(wavfile_num)
         print (arr_c)
-
         print("-----------------------")
         print("-----------------------")
 
         wavfile_num = wavfile_num + 1
-
