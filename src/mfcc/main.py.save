@@ -72,7 +72,6 @@ def create_ceps(fn):
 
 if __name__ == "__main__":
 
-    sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break', 5: 'scream'}
     wavfile_num = 0
     wavfile_name = "file"
     X, y = read_ceps(genre_list)
@@ -89,12 +88,11 @@ if __name__ == "__main__":
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
+
         arr_c = clfss.predict(X)
         print(wavfile_num)
-        
-        for key in sounds.keys():
-            if arr_c == key:
-                print sounds.get(arr_c)
+
+        print (arr_c)
         print("-----------------------")
         print("-----------------------")
 
