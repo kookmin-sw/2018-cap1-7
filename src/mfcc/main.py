@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
         arr_c = clfss.predict(X)
         print(wavfile_num)
-        print (arr_c)
+        print (genre_list[arr_c[0]])
 
         print("-----------------------")
         print("-----------------------")
