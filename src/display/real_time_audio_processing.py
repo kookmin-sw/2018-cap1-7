@@ -22,7 +22,7 @@ while True: # go for infinite loop
 
     if peak > 1000 :
         # visualize values by bars
-        bars="#"*int(50*peak/2**16)
+        bars="l"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         os.system("sudo ./show %s" %bars)
 
