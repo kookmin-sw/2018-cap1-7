@@ -3,12 +3,12 @@ import wave
 import sys
 
 
-def make_wav(name="file",num=0):
+def make_wav(name="file",num=0,sec=5):
 	FORMAT = pyaudio.paInt16
 	CHANNELS = 1
 	RATE = 44100
 	CHUNK = 2048
-	RECORD_SECONDS = 5
+	RECORD_SECONDS = sec
 	WAVE_OUTPUT_FILENAME = name+str(num)+".wav"
 
 	audio = pyaudio.PyAudio()

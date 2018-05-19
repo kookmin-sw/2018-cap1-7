@@ -10,7 +10,8 @@ if __name__ == "__main__":
     f = "dog"
     while 1:
         num = int(input())
-        make_wav(f, num)
+        sec = int(input())
+        make_wav(f, num, sec)
         fn = DIR + f + str(num) + ".wav"
         X = []
         create_ceps(fn)
