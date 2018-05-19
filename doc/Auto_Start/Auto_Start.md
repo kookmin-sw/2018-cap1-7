@@ -32,4 +32,4 @@
 ### 참고: http://fishpoint.tistory.com/2370
 
 
-
+<img src="/auto_login.png" width="300px" height="100px">
