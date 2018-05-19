@@ -15,5 +15,5 @@ while True :
     if value_stt == False :
         os.system('python transcribe_streaming_mic_gaeul.py')
     if value_sound == False :
-        os.system('ls')
+        os.system('python real_time_audio_processing.py')
     time.sleep(0.1)
