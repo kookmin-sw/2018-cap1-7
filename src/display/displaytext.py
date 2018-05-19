@@ -6,13 +6,14 @@ import sys
 import os
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(15, GPIO.IN)
-count = 0
+GPIO.setup(14, GPIO.IN)
+GPIO.setup(18, GPIO.IN)
 while True :
-    value = GPIO.input(15)
-    print ("value is ", value)
-    if value == False :
+    value_stt = GPIO.input(14)
+    value_sound = GPIO.input(18)
+    print ("value is ", value_stt, "value_sound is", value_sound)
+    if value_stt == False :
         os.system('python transcribe_streaming_mic_gaeul.py')
-        count = count + 1
-        print count
+    if value_sound == False :
+        os.system('ls')
     time.sleep(0.1)
