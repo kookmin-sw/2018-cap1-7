@@ -4,6 +4,7 @@
 import pyaudio  
 import numpy as np
 import os
+import time
 
 CHUNK = 2**11 # number of data points to read at a time --> buffr로
 RATE = 44100  # time resolution of the recoding device(mic module) -- 44Kbyte(Hz) 
@@ -20,11 +21,13 @@ while True: # go for infinite loop
     # Audio level meter -> peak average method
     peak=np.average(np.abs(data))*2
 
-    if peak > 1000 :
-        # visualize values by bars
-        bars="l"*int(50*peak/2**16)
-        print("%04d %s"%(peak,bars)) # output 
-        os.system("sudo ./show %s" %bars)
+
+    # visualize values by bars
+    bars="l"*int(50*peak/2**16)
+    print("%04d %s"%(peak,bars)) # output 
+    os.system("sudo ./show %s" %bars)
+    time.sleep(0.5)
+        
 
 # stop stream
 stream.stop_stream()  
