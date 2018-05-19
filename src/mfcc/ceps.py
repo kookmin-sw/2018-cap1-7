@@ -40,6 +40,7 @@ def create_ceps(fn):
 def read_ceps(genre_list, base_dir=GENRE_DIR):
     X = []
     y = []
+
     for label, genre in enumerate(genre_list):
         for fn in glob.glob(os.path.join(base_dir, genre, "*.ceps.npy")):
             ceps = np.load(fn)

@@ -1,55 +1,61 @@
 import pyaudio
 import wave
+import sys
+
 
 def make_wav(name="file",num=0):
-    FORMAT = pyaudio.paInt16
-    CHANNELS = 1
-    RATE = 44100
-    CHUNK = 2048
-    RECORD_SECONDS = 1
-    WAVE_OUTPUT_FILENAME = name
+	FORMAT = pyaudio.paInt16
+	CHANNELS = 1
+	RATE = 44100
+	CHUNK = 2048
+	RECORD_SECONDS = 5
+	WAVE_OUTPUT_FILENAME = name+str(num)+".wav"
 
-    audio = pyaudio.PyAudio()
+	audio = pyaudio.PyAudio()
 
-    # start Recording
+	# start Recording
+	stream = audio.open(format=pyaudio.paInt16, 
+		            channels=CHANNELS, 
+		            rate=RATE, 
+		            input=True, 
+		            #input_device_index=2,
+		            frames_per_buffer=CHUNK)
 
-    stream = audio.open(format=pyaudio.paInt16,
-                        channels=CHANNELS,
-                        rate=RATE,
-                        input=True,
+	print "recording..."
 
-                      #  input_device_index=2,
+	frames = []
 
-                        frames_per_buffer=CHUNK)
+	for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
 
-    print "recording..."
+		data = stream.read(CHUNK, exception_on_overflow = False)
 
-    frames = []
+		frames.append(data)
 
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
-        data = stream.read(CHUNK, exception_on_overflow=False)
-        frames.append(data)
+	print "finished recording"
 
-    print "finished recording"
+	 
+	# stop Recording
 
-    # stop Recording
+	stream.stop_stream()
+	stream.close()
+	audio.terminate()
 
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
-    waveFile = wave.open(WAVE_OUTPUT_FILENAME+str(num)+".wav", 'wb')
-    waveFile.setnchannels(CHANNELS)
-    waveFile.setsampwidth(audio.get_sample_size(FORMAT))
-    waveFile.setframerate(RATE)
-    waveFile.writeframes(b''.join(frames))
-    waveFile.close()
+	 
 
+	waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+
+	waveFile.setnchannels(CHANNELS)
+
+	waveFile.setsampwidth(audio.get_sample_size(FORMAT))
+
+	waveFile.setframerate(RATE)
+
+	waveFile.writeframes(b''.join(frames))
+
+	waveFile.close()
 
 
 if __name__ == "__main__":
-    wavfile_num = 0
-    wavfile_name = "file"
-    while 20 :
-        make_wav(wavfile_name,wavfile_num)
-        wavfile_num+=1
+    make_wav("f",0)
+
 
