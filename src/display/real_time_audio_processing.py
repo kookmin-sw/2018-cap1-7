@@ -19,10 +19,11 @@ while True: # go for infinite loop
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
     # Audio level meter -> peak average method
     peak=np.average(np.abs(data))*2
-    # visualize values by bars
-    bars="#"*int(50*peak/2**16)
-    print("%04d %s"%(peak,bars)) # output 
+
     if peak > 1000 :
+        # visualize values by bars
+        bars="#"*int(50*peak/2**16)
+        print("%04d %s"%(peak,bars)) # output 
         os.system("sudo ./show %s" %bars)
 
 # stop stream
