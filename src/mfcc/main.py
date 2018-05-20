@@ -91,11 +91,11 @@ if __name__ == "__main__":
 
         arr_c = clfss.predict(X)
         print(wavfile_num)
-
+	predicted_key = arr_c[0]
+        print (predicted_key)
         for key in sounds.keys():
             if arr_c == key:
-                print sounds.get(arr_c)
-
+                print sounds.get(predicted_key)
         print("-----------------------")
         print("-----------------------")
 
