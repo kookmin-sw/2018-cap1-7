@@ -95,6 +95,7 @@ if __name__ == "__main__":
         print (predicted_key)
         for key in sounds.keys():
             if arr_c == key:
+                os.system('sudo ./show %s' %sounds.get(predicted_key))
                 print sounds.get(predicted_key)
         print("-----------------------")
         print("-----------------------")
