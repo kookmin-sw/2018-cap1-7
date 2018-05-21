@@ -31,6 +31,7 @@ from __future__ import division
 import re
 import sys
 import os
+import RPi.GPIO as GPIO
 
 from google.cloud import speech
 from google.cloud.speech import enums
@@ -43,6 +44,9 @@ from six.moves import queue
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
 
+#setmode for the button 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(14, GPIO.IN)
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -125,6 +129,8 @@ def listen_print_loop(responses):
     the next result to overwrite it, until the response is a final one. For the
     final one, print a newline to preserve the finalized transcription.
     """
+    value_stt = GPIO.input(14)
+    print("value is", value_stt)
     num_chars_printed = 0
     for response in responses:
         if not response.results:
