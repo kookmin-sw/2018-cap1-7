@@ -174,7 +174,7 @@ def listen_print_loop(responses):
         else:
             print(transcript + overwrite_chars)
             text = transcript + overwrite_chars
-            os.system('sudo ./show %s' %text)
+            os.system('sudo ./oled %s' %text)
 
             value_stt = GPIO.input(14)
             print("value is", value_stt)

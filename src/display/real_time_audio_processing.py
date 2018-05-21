@@ -33,8 +33,11 @@ while True and value_sound : # go for infinite loop
     if peak > 2000 : 
         bars="l"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
-        os.system("sudo ./show %s" %bars)
+        os.system("sudo ./oled %s" %bars)
         time.sleep(0.12)
+        if peak > 20000:
+            os.system("sudo ../mfcc/main.py")
+		
     value_sound = GPIO.input(18)
 
 # stop stream
