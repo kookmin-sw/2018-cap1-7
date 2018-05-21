@@ -31,6 +31,7 @@ from __future__ import division
 import re
 import sys
 import os
+import RPi.GPIO as GPIO
 
 from google.cloud import speech
 from google.cloud.speech import enums
@@ -43,6 +44,9 @@ from six.moves import queue
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
 
+#setmode for the button 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(14, GPIO.IN)
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -125,8 +129,17 @@ def listen_print_loop(responses):
     the next result to overwrite it, until the response is a final one. For the
     final one, print a newline to preserve the finalized transcription.
     """
+
+
     num_chars_printed = 0
     for response in responses:
+        value_stt = GPIO.input(14)
+        print("value is", value_stt)
+
+        if value_stt == False :
+            os.system("python displaytext.py")
+
+        
         if not response.results:
             continue
 
@@ -147,6 +160,11 @@ def listen_print_loop(responses):
         # some extra spaces to overwrite the previous result
         overwrite_chars = ' ' * (num_chars_printed - len(transcript))
 
+        #value_stt = GPIO.input(14)
+        #print("value is", value_stt)
+        if value_stt == False :
+            os.system("python displaytext.py")
+
         if not result.is_final:
             sys.stdout.write(transcript + overwrite_chars + '\r')
             sys.stdout.flush()
@@ -157,6 +175,12 @@ def listen_print_loop(responses):
             print(transcript + overwrite_chars)
             text = transcript + overwrite_chars
             os.system('sudo ./show %s' %text)
+
+            value_stt = GPIO.input(14)
+            print("value is", value_stt)
+
+            if value_stt == False :
+                os.system("python displaytext.py")
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -188,8 +212,12 @@ def main():
 
         responses = client.streaming_recognize(streaming_config, requests)
 
+        value_stt = GPIO.input(14)
+
         # Now, put the transcription responses to use.
-        listen_print_loop(responses)
+        while value_stt ==True :
+            listen_print_loop(responses)
+        os.system("python displaytext.py")
 
 
 if __name__ == '__main__':
