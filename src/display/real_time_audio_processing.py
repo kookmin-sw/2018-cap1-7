@@ -40,6 +40,6 @@ while True and value_sound : # go for infinite loop
 # stop stream
 stream.stop_stream()  
 stream.close()
-os.system("python displaytext.py")      
 p.terminate()
 
+os.system("python displaytext.py")      
