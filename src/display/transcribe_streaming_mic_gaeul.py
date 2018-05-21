@@ -130,6 +130,13 @@ def listen_print_loop(responses):
     final one, print a newline to preserve the finalized transcription.
     """
 
+    value_stt = GPIO.input(14)
+    print("value is", value_stt)
+
+    if value_stt == False :
+        os.system("python displaytext.py")
+
+
     num_chars_printed = 0
     for response in responses:
         value_stt = GPIO.input(14)
@@ -204,12 +211,6 @@ def main():
         config=config,
         interim_results=True)
 
-        value_stt = GPIO.input(14)
-        print("value is", value_stt)
-
-        if value_stt == False :
-            os.system("python displaytext.py")
-
     with MicrophoneStream(RATE, CHUNK) as stream:
         audio_generator = stream.generator()
         requests = (types.StreamingRecognizeRequest(audio_content=content)
@@ -217,8 +218,12 @@ def main():
 
         responses = client.streaming_recognize(streaming_config, requests)
 
+        value_stt = GPIO.input(14)
+
         # Now, put the transcription responses to use.
-        listen_print_loop(responses)
+        while value_stt ==True :
+            listen_print_loop(responses)
+        os.system("python displaytext.py")
 
 
 if __name__ == '__main__':
