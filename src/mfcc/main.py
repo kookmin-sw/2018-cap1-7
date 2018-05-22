@@ -50,33 +50,31 @@ RATE = 44100
 
 def get_volume():
     p=pyaudio.PyAudio() # start the PyAudio class 
-    # convert analog signal to digital signal(Int16) (uses default input device)  
+
     stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
-    # Audio level meter -> peak average method
+
     peak=np.average(np.abs(data))*2
 
     print peak
-    # visualize values by bars
+    bars = ""
     if peak > 3000: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
-        os.system("sudo ./oled %s" %bars)
+        
         #time.sleep(0.09)#print time
-        if peak > 5000:
-            print("Big!!!!!!!!!!!!")
-            # stop stream
+        if peak > 9000:
+            #stop stream
             stream.stop_stream()  
             stream.close()
             p.terminate()
-            return 1
-    #           os.system("sudo ../mfcc/main.py")
+            return 1, bars
     # stop stream
     stream.stop_stream()  
     stream.close()
     p.terminate()
-    return 0
+    return 0, bars
 
 	
 
@@ -140,18 +138,19 @@ if __name__ == "__main__":
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
-        check = get_volume()
+        check, bars = get_volume()
        
         if check==1 :
             arr_c = clfss.predict(X)
-            print(wavfile_num)
             predicted_key = arr_c[0]
-            print (predicted_key)
+            print ( str(wavfile_num) ,' : ', predicted_key)
             for key in sounds.keys():
                 if arr_c == key:
-                    os.system('sudo ./show %s' %sounds.get(predicted_key))
+                    str_ =  sounds.get(predicted_key)+"/n"+bars
+                    os.system('sudo ./show %s' %str_)
                     print sounds.get(predicted_key)
-
+        else:
+            os.system("sudo ./oled %s" %bars)
 
         wavfile_num = wavfile_num + 1
 
