@@ -39,44 +39,44 @@ genre_dir = GENRE_DIR
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.IN)
 
-value_sound = GPIO.input(18)
+value_sound = 1
 
 CHUNK = 2**11 # number of data points to read at a time --> buffr로
 RATE = 44100
 #
 
-p=pyaudio.PyAudio() # start the PyAudio class
-# convert analog signal to digital signal(Int16) (uses default input device)  
-stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
-              frames_per_buffer=CHUNK) 
+
 
 
 def get_volume():
+    p=pyaudio.PyAudio() # start the PyAudio class 
 
-    p=pyaudio.PyAudio() # start the PyAudio class
-    # convert analog signal to digital signal(Int16) (uses default input device)  
     stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
-    #time.sleep(0.08)# recieve time
-    #while True and value_sound : # go for infinite loop
-    # convet BufferdData(int) to String for knowing audio level value 
-    # steam.read(Slieced Data)
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
-    # Audio level meter -> peak average method
+
     peak=np.average(np.abs(data))*2
 
-    print peak
-    # visualize values by bars
+   
+    bars = ""
     if peak > 3000: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
-        os.system("sudo ./oled %s" %bars)
-        #    time.sleep(0.09)#print time
-        if peak > 5000:
-            print("Big!!!!!!!!!!!!")
-            return 1
-    #           os.system("sudo ../mfcc/main.py")
-	return 0
+        
+        #time.sleep(0.09)#print time
+        if peak > 9000:
+            #stop stream
+            stream.stop_stream()  
+            stream.close()
+            p.terminate()
+            return 1, bars
+    else :
+        print peak
+    # stop stream
+    stream.stop_stream()  
+    stream.close()
+    p.terminate()
+    return 0, bars
 
 	
 
@@ -140,26 +140,26 @@ if __name__ == "__main__":
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
-        check = get_volume()
+        check, bars = get_volume()
+       
         if check==1 :
             arr_c = clfss.predict(X)
-            print(wavfile_num)
             predicted_key = arr_c[0]
-            print (predicted_key)
+ 
             for key in sounds.keys():
                 if arr_c == key:
-                    os.system('sudo ./show %s' %sounds.get(predicted_key))
-                    print sounds.get(predicted_key)
-            print("-----------------------")
-            print("-----------------------")
+                    str_ =  sounds.get(predicted_key)+bars
+                    os.system('sudo ./show %s' %str_)
+                    print '-----------------------'
+                    print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
+                    print '-----------------------'
+        else:
+            os.system("sudo ./oled %s" %bars)
 
         wavfile_num = wavfile_num + 1
 
         value_sound = GPIO.input(18)
 
-    # stop stream
-    stream.stop_stream()  
-    stream.close()
-    p.terminate()
+
 
     os.system("python displaytext.py")
