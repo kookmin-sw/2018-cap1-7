@@ -6,6 +6,12 @@ import os
 import numpy as np
 import sys
 
+#
+import pyaudio  
+import time
+import RPi.GPIO as GPIO
+#
+
 import scipy
 import scipy.io.wavfile
 
@@ -28,6 +34,51 @@ from save import make_wav
 genre_list = GENRE_LIST
 genre_dir = GENRE_DIR
 
+
+#
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18, GPIO.IN)
+
+value_sound = GPIO.input(18)
+
+CHUNK = 2**11 # number of data points to read at a time --> buffr로
+RATE = 44100
+#
+
+p=pyaudio.PyAudio() # start the PyAudio class
+# convert analog signal to digital signal(Int16) (uses default input device)  
+stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
+              frames_per_buffer=CHUNK) 
+
+
+def get_volume():
+
+    p=pyaudio.PyAudio() # start the PyAudio class
+    # convert analog signal to digital signal(Int16) (uses default input device)  
+    stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
+              frames_per_buffer=CHUNK) 
+    #time.sleep(0.08)# recieve time
+    #while True and value_sound : # go for infinite loop
+    # convet BufferdData(int) to String for knowing audio level value 
+    # steam.read(Slieced Data)
+    data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
+    # Audio level meter -> peak average method
+    peak=np.average(np.abs(data))*2
+
+    print peak
+    # visualize values by bars
+    if peak > 3000: 
+        bars="ll"*int(50*peak/2**16)
+        print("%04d %s"%(peak,bars)) # output 
+        os.system("sudo ./oled %s" %bars)
+        #    time.sleep(0.09)#print time
+        if peak > 5000:
+            print("Big!!!!!!!!!!!!")
+            return 1
+    #           os.system("sudo ../mfcc/main.py")
+	return 0
+
+	
 
 def train_model(clf_factory, X, Y):
     train_errors = []
@@ -81,23 +132,34 @@ if __name__ == "__main__":
 
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
-    while 1:
-        make_wav("file", wavfile_num)
+    while 1 and value_sound:
+        make_wav("file", wavfile_num, 0.5)
         fn = DIR + "file" + str(wavfile_num) + ".wav"
         X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
-        arr_c = clfss.predict(X)
-        print(wavfile_num)
-	predicted_key = arr_c[0]
-        print (predicted_key)
-        for key in sounds.keys():
-            if arr_c == key:
-                os.system('sudo ./show %s' %sounds.get(predicted_key))
-                print sounds.get(predicted_key)
-        print("-----------------------")
-        print("-----------------------")
+        check = get_volume()
+        if check==1 :
+            arr_c = clfss.predict(X)
+            print(wavfile_num)
+            predicted_key = arr_c[0]
+            print (predicted_key)
+            for key in sounds.keys():
+                if arr_c == key:
+                    os.system('sudo ./show %s' %sounds.get(predicted_key))
+                    print sounds.get(predicted_key)
+            print("-----------------------")
+            print("-----------------------")
 
         wavfile_num = wavfile_num + 1
+
+        value_sound = GPIO.input(18)
+
+    # stop stream
+    stream.stop_stream()  
+    stream.close()
+    p.terminate()
+
+    os.system("python displaytext.py")
