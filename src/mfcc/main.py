@@ -39,28 +39,20 @@ genre_dir = GENRE_DIR
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.IN)
 
-value_sound = GPIO.input(18)
+value_sound = 1
 
 CHUNK = 2**11 # number of data points to read at a time --> buffr로
 RATE = 44100
 #
 
-p=pyaudio.PyAudio() # start the PyAudio class
-# convert analog signal to digital signal(Int16) (uses default input device)  
-stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
-              frames_per_buffer=CHUNK) 
+
 
 
 def get_volume():
-
-    p=pyaudio.PyAudio() # start the PyAudio class
+    p=pyaudio.PyAudio() # start the PyAudio class 
     # convert analog signal to digital signal(Int16) (uses default input device)  
     stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
-    #time.sleep(0.08)# recieve time
-    #while True and value_sound : # go for infinite loop
-    # convet BufferdData(int) to String for knowing audio level value 
-    # steam.read(Slieced Data)
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
     # Audio level meter -> peak average method
     peak=np.average(np.abs(data))*2
@@ -71,12 +63,20 @@ def get_volume():
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         os.system("sudo ./oled %s" %bars)
-        #    time.sleep(0.09)#print time
+        #time.sleep(0.09)#print time
         if peak > 5000:
             print("Big!!!!!!!!!!!!")
+            # stop stream
+            stream.stop_stream()  
+            stream.close()
+            p.terminate()
             return 1
     #           os.system("sudo ../mfcc/main.py")
-	return 0
+    # stop stream
+    stream.stop_stream()  
+    stream.close()
+    p.terminate()
+    return 0
 
 	
 
@@ -141,6 +141,7 @@ if __name__ == "__main__":
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
         check = get_volume()
+       
         if check==1 :
             arr_c = clfss.predict(X)
             print(wavfile_num)
@@ -150,16 +151,12 @@ if __name__ == "__main__":
                 if arr_c == key:
                     os.system('sudo ./show %s' %sounds.get(predicted_key))
                     print sounds.get(predicted_key)
-            print("-----------------------")
-            print("-----------------------")
+
 
         wavfile_num = wavfile_num + 1
 
         value_sound = GPIO.input(18)
 
-    # stop stream
-    stream.stop_stream()  
-    stream.close()
-    p.terminate()
+
 
     os.system("python displaytext.py")
