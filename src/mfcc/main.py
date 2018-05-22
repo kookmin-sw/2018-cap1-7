@@ -57,6 +57,7 @@ def get_volume():
 
     peak=np.average(np.abs(data))*2
 
+   
     bars = ""
     if peak > 3000: 
         bars="ll"*int(50*peak/2**16)
@@ -69,7 +70,7 @@ def get_volume():
             stream.close()
             p.terminate()
             return 1, bars
-    else:
+    else :
         print peak
     # stop stream
     stream.stop_stream()  
@@ -144,12 +145,14 @@ if __name__ == "__main__":
         if check==1 :
             arr_c = clfss.predict(X)
             predicted_key = arr_c[0]
-            print ('>> file_'+str(wavfile_num)+' = '+str(predicted_key))
+ 
             for key in sounds.keys():
                 if arr_c == key:
-                    str_ =  '>>'+sounds.get(predicted_key)+bars
+                    str_ =  sounds.get(predicted_key)+bars
                     os.system('sudo ./show %s' %str_)
-                    print 'Sound : [',sounds.get(predicted_key),']'
+                    print '-----------------------'
+                    print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
+                    print '-----------------------'
         else:
             os.system("sudo ./oled %s" %bars)
 
