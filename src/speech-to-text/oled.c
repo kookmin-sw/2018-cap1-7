@@ -456,8 +456,8 @@ void main(int argc, char* argv[])
   LCD_Init();
 
   // show result list 
-  char result[] = "";
-  for (int i = 1; i < argc < i++){
+  char result[80];
+  for (int i = 1; i < argc ; i++){
     strcat(result, argv[i]);
     strcat(result, " ");
     LCD_P6x8Str(0,2,result);
