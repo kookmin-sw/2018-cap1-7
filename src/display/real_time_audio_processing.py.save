@@ -20,7 +20,7 @@ p=pyaudio.PyAudio() # start the PyAudio class
 # convert analog signal to digital signal(Int16) (uses default input device)  
 stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
               frames_per_buffer=CHUNK) 
-time.sleep(1)
+#time.sleep(0.08)
 while True and value_sound : # go for infinite loop
     # convet BufferdData(int) to String for knowing audio level value 
     # steam.read(Slieced Data)
@@ -30,13 +30,13 @@ while True and value_sound : # go for infinite loop
 
     print peak
     # visualize values by bars
-    if peak > 200 : 
-        bars="l"*int(50*peak/2**16)
+    if peak > 4000: 
+        bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         os.system("sudo ./oled %s" %bars)
-        time.sleep(0.12)
-        if peak > 500:
-            os.system("sudo ../mfcc/main.py")
+        time.sleep(0.08)
+#        if peak > 20000:
+#           os.system("sudo ../mfcc/main.py")
 		
     value_sound = GPIO.input(18)
 
