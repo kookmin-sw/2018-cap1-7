@@ -135,14 +135,48 @@ if __name__ == "__main__":
     while 1 and value_sound:
         if (wavfile_num > 5):
              wavfile_num = 0
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled %s" %off)
+            os.system("python displaytext.py")
+
         make_wav("file", wavfile_num, 0.5)
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         fn = DIR + "file" + str(wavfile_num) + ".wav"
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
         check, bars = get_volume()
+        
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
        
         if check==1 :
             arr_c = clfss.predict(X)
@@ -151,7 +185,7 @@ if __name__ == "__main__":
             for key in sounds.keys():
                 if arr_c == key:
                     str_ =  sounds.get(predicted_key)+"\n" + bars
-                    os.system('sudo ./show %s' %str_)
+                    os.system('sudo ./oled %s' %str_)
                     print '-----------------------'
                     print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
                     print '-----------------------'
@@ -162,5 +196,5 @@ if __name__ == "__main__":
         value_sound = GPIO.input(18)
 
 
-
+    os.system("sudo ./oled off")
     os.system("python displaytext.py")
