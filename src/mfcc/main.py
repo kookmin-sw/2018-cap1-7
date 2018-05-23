@@ -122,6 +122,8 @@ def create_ceps(fn):
 
 
 if __name__ == "__main__":
+    instruction = "started the volume size function"
+    os.system('sudo oled %s' %instruction)
 
     sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break', 5: 'scream'}
     wavfile_num = 0
