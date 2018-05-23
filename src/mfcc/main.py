@@ -122,9 +122,6 @@ def create_ceps(fn):
 
 
 if __name__ == "__main__":
-    instruction = "started the volume size function"
-    os.system('sudo oled %s' %instruction)
-
     sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break', 5: 'scream'}
     wavfile_num = 0
     wavfile_name = "file"
@@ -134,6 +131,11 @@ if __name__ == "__main__":
 
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
+    instruction = "started the volume size function"
+    os.system('sudo ./oled %s' %instruction)
+    time.sleep(1.5)
+
+
     while 1 and value_sound:
         if (wavfile_num > 5):
              wavfile_num = 0
@@ -141,7 +143,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system("sudo ./oled %s" %off)
+            os.system('sudo ./oled off')
             os.system("python displaytext.py")
 
         make_wav("file", wavfile_num, 0.5)
