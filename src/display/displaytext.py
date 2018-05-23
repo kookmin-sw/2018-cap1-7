@@ -8,6 +8,10 @@ import os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(14, GPIO.IN)
 GPIO.setup(18, GPIO.IN)
+
+#show instrunction
+os.system('Press while or yellow button.')
+
 while True :
     value_stt = GPIO.input(14)
     value_sound = GPIO.input(18)
