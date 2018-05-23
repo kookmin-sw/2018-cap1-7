@@ -214,6 +214,9 @@ def main():
 
         value_stt = GPIO.input(14)
 
+        instruction = "started the speech to text function"
+        os.system('sudo ./oled %s' %instruction)
+
         # Now, put the transcription responses to use.
         while value_stt ==True :
             listen_print_loop(responses)
