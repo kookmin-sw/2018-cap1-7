@@ -143,6 +143,13 @@ if __name__ == "__main__":
             os.system("python displaytext.py")
 
         make_wav("file", wavfile_num, 0.5)
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         fn = DIR + "file" + str(wavfile_num) + ".wav"
 
         # should think better idea
