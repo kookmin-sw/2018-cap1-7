@@ -59,12 +59,12 @@ def get_volume():
 
    
     bars = ""
-    if peak > 3000: 
+    if peak > 1000: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 9000:
+        if peak > 5000:
             #stop stream
             stream.stop_stream()  
             stream.close()
@@ -133,7 +133,8 @@ if __name__ == "__main__":
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     while 1 and value_sound:
-        if (wavfile_num > 5) wavfile_num = 0
+        if (wavfile_num > 5):
+             wavfile_num = 0
         make_wav("file", wavfile_num, 0.5)
         fn = DIR + "file" + str(wavfile_num) + ".wav"
         X = []
@@ -149,7 +150,7 @@ if __name__ == "__main__":
  
             for key in sounds.keys():
                 if arr_c == key:
-                    str_ =  sounds.get(predicted_key)+bars
+                    str_ =  sounds.get(predicted_key)+"\n" + bars
                     os.system('sudo ./show %s' %str_)
                     print '-----------------------'
                     print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
