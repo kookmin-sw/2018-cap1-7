@@ -133,6 +133,7 @@ if __name__ == "__main__":
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     while 1 and value_sound:
+        if (wavfile_num > 5) wavfile_num = 0
         make_wav("file", wavfile_num, 0.5)
         fn = DIR + "file" + str(wavfile_num) + ".wav"
         X = []
@@ -155,7 +156,6 @@ if __name__ == "__main__":
                     print '-----------------------'
         else:
             os.system("sudo ./oled %s" %bars)
-
         wavfile_num = wavfile_num + 1
 
         value_sound = GPIO.input(18)
