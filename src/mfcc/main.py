@@ -64,7 +64,7 @@ def get_volume():
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 5000:
+        if peak > 10000:
             #stop stream
             stream.stop_stream()  
             stream.close()
@@ -188,13 +188,14 @@ if __name__ == "__main__":
  
             for key in sounds.keys():
                 if arr_c == key:
-                    str_ =  sounds.get(predicted_key)+"\n" + bars
+                    str_ =  '0 '+ str(predicted_key)
                     os.system('sudo ./oled %s' %str_)
                     print '-----------------------'
                     print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
                     print '-----------------------'
         else:
-            os.system("sudo ./oled %s" %bars)
+            a = '1 '+bars
+            os.system("sudo ./oled %s" %a)
         wavfile_num = wavfile_num + 1
 
         value_sound = GPIO.input(18)
