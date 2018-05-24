@@ -460,7 +460,8 @@ void main(int argc, char* argv[])
 
 //   show result list
 
-
+//oled 1 sentence    -> setence     print
+//oled 0 num		 -> bmps[num]   draw bmp picture
  	
   if(atoi(argv[1])==1){
   char result[80];
@@ -472,7 +473,7 @@ void main(int argc, char* argv[])
   }
   else{
 	char c = argv[2]-'0';
-	Draw_BMP(IMG_dog5);
+	Draw_BMP(bmps[c]);
 	}
 }
 

@@ -188,8 +188,8 @@ if __name__ == "__main__":
  
             for key in sounds.keys():
                 if arr_c == key:
-                    str_ =  sounds.get(predicted_key)+"\n" + bars
-                    os.system('sudo ./oled %s' %'0 0')
+                    str_ =  '0 '+ str(predicted_key)
+                    os.system('sudo ./oled %s' %str_)
                     print '-----------------------'
                     print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
                     print '-----------------------'
