@@ -59,12 +59,12 @@ def get_volume():
 
    
     bars = ""
-    if peak > 1000: 
+    if peak > 100: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 10000:
+        if peak > 700:
             #stop stream
             stream.stop_stream()  
             stream.close()
@@ -103,6 +103,7 @@ def create_model():
 
     return clf
 
+
 def read_files(fn, base_dir=genre_dir):
     X = []
     for fn in glob.glob(os.path.join(base_dir, fn)):
@@ -118,7 +119,6 @@ def create_ceps(fn):
     sample_rate, X = scipy.io.wavfile.read(fn)
     ceps, mspec, spec = mfcc(X)
     return ceps
-
 
 
 if __name__ == "__main__":
@@ -165,6 +165,7 @@ if __name__ == "__main__":
         X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
+
 
         # should think better idea
         value_sound = GPIO.input(18)
