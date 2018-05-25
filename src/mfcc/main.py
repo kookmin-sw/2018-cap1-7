@@ -59,12 +59,12 @@ def get_volume():
 
    
     bars = ""
-    if peak > 3000: 
+    if peak > 100: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 9000:
+        if peak > 700:
             #stop stream
             stream.stop_stream()  
             stream.close()
@@ -103,6 +103,7 @@ def create_model():
 
     return clf
 
+
 def read_files(fn, base_dir=genre_dir):
     X = []
     for fn in glob.glob(os.path.join(base_dir, fn)):
@@ -120,9 +121,7 @@ def create_ceps(fn):
     return ceps
 
 
-
 if __name__ == "__main__":
-
     sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break', 5: 'scream'}
     wavfile_num = 0
     wavfile_name = "file"
@@ -132,16 +131,57 @@ if __name__ == "__main__":
 
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
+    instruction = "started the volume size function"
+    os.system('sudo ./oled %s' %instruction)
+    time.sleep(1.5)
+
+
     while 1 and value_sound:
-        if (wavfile_num > 5) wavfile_num = 0
+        if (wavfile_num > 5):
+             wavfile_num = 0
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system('sudo ./oled off')
+            os.system("python displaytext.py")
+
         make_wav("file", wavfile_num, 0.5)
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         fn = DIR + "file" + str(wavfile_num) + ".wav"
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
+
+
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
+
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
 
         check, bars = get_volume()
+        
+        # should think better idea
+        value_sound = GPIO.input(18)
+        if value_sound == 0 :
+            os.system("sudo ./oled off")
+            os.system("python displaytext.py")
        
         if check==1 :
             arr_c = clfss.predict(X)
@@ -149,17 +189,18 @@ if __name__ == "__main__":
  
             for key in sounds.keys():
                 if arr_c == key:
-                    str_ =  sounds.get(predicted_key)+bars
-                    os.system('sudo ./show %s' %str_)
+                    str_ =  '0 '+ str(predicted_key)
+                    os.system('sudo ./oled %s' %str_)
                     print '-----------------------'
                     print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
                     print '-----------------------'
         else:
-            os.system("sudo ./oled %s" %bars)
+            a = '1 '+bars
+            os.system("sudo ./oled %s" %a)
         wavfile_num = wavfile_num + 1
 
         value_sound = GPIO.input(18)
 
 
-
+    os.system("sudo ./oled off")
     os.system("python displaytext.py")

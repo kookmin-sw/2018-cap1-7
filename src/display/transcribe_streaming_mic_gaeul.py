@@ -174,7 +174,7 @@ def listen_print_loop(responses):
         else:
             print(transcript + overwrite_chars)
             text = transcript + overwrite_chars
-            os.system('sudo ./oled %s' %text)
+            os.system('sudo ./oled 1 %s' %text)
 
             value_stt = GPIO.input(14)
             print("value is", value_stt)
@@ -213,6 +213,9 @@ def main():
         responses = client.streaming_recognize(streaming_config, requests)
 
         value_stt = GPIO.input(14)
+
+        instruction = "started the speech to text function"
+        os.system('sudo ./oled 1 %s' %instruction)
 
         # Now, put the transcription responses to use.
         while value_stt ==True :

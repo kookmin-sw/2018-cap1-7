@@ -5,6 +5,9 @@
 // GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
 
+//
+#include "bmp_list.h"
+
 #define byte  unsigned char
 #define word  unsigned int
 #define dword unsigned long  
@@ -425,6 +428,7 @@ void LCD_P8x16Str(unsigned char x,unsigned char y,unsigned char ch[])
 //Parameters: start point coordinates (x, y), x is the range of 0 ~ 127, y is in the range of 0 to 7, page
 //Returns: None
 //==============================================================
+
 void Draw_BMP(byte bmp[])
 { 	
 	byte x,y;
@@ -443,7 +447,6 @@ void Draw_BMP(byte bmp[])
 
 
 
-
 void main(int argc, char* argv[]) 
 {
   unsigned char i=0;    
@@ -455,12 +458,16 @@ void main(int argc, char* argv[])
   pinMode(6, OUTPUT); 
   LCD_Init();
 
-  // show result list 
-  char result[] = "";
-  for (int i = 1; i < argc < i++){
+//   show result list 	
+  if(argv[1]!=0){
+  char result[80];
+  for (int i = 2; i < argc ; i++){
     strcat(result, argv[i]);
     strcat(result, " ");
     LCD_P6x8Str(0,2,result);
     }
-  
+  }
+  else{
+	Draw_BMP(bmps[argv[2]]);
+	}
 }
