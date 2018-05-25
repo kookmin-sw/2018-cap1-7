@@ -33,7 +33,7 @@ while True and value_sound : # go for infinite loop
     if peak > 200 : 
         bars="l"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
-        os.system("sudo ./oled %s" %bars)
+        os.system("sudo ./oled 1 %s" %bars)
         time.sleep(0.12)
         if peak > 500:
             os.system("sudo ../mfcc/main.py")
