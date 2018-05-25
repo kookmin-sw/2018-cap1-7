@@ -59,12 +59,12 @@ def get_volume():
 
    
     bars = ""
-    if peak > 1000: 
+    if peak > 100: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 10000:
+        if peak > 700:
             #stop stream
             stream.stop_stream()  
             stream.close()

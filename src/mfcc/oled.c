@@ -473,7 +473,7 @@ void main(int argc, char* argv[])
   }
   else{
 	char c = argv[2]-'0';
-	Draw_BMP(bmps[c]);
+	Draw_BMP(bmps[2]);
 	}
 }
 
