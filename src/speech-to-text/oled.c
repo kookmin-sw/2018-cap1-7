@@ -458,8 +458,9 @@ void main(int argc, char* argv[])
   pinMode(6, OUTPUT); 
   LCD_Init();
 
-//   show result list 	
-  if(argv[1]!=0){
+//   show result list
+ 	
+  if(argv[1]=='1'){
   char result[80];
   for (int i = 2; i < argc ; i++){
     strcat(result, argv[i]);
@@ -468,6 +469,11 @@ void main(int argc, char* argv[])
     }
   }
   else{
-	Draw_BMP(bmps[argv[2]]);
+	char c = argv[2]-'0';
+	Draw_BMP(bmps[c]);
 	}
 }
+
+
+
+
