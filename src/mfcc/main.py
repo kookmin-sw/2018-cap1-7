@@ -103,6 +103,7 @@ def create_model():
 
     return clf
 
+
 def read_files(fn, base_dir=genre_dir):
     X = []
     for fn in glob.glob(os.path.join(base_dir, fn)):
@@ -118,7 +119,6 @@ def create_ceps(fn):
     sample_rate, X = scipy.io.wavfile.read(fn)
     ceps, mspec, spec = mfcc(X)
     return ceps
-
 
 
 if __name__ == "__main__":
@@ -165,6 +165,7 @@ if __name__ == "__main__":
         X = []
         ceps = create_ceps(fn)
         num_ceps = len(ceps)
+
 
         # should think better idea
         value_sound = GPIO.input(18)
