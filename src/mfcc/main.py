@@ -56,15 +56,19 @@ def get_volume():
     data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
 
     peak=np.average(np.abs(data))*2
-
-   
+    if len(sys.argv) > 1:
+        peak_range_1=sys.argv[1]
+        peak_range_2=sys.argv[2]
+    else:
+        peak_range_1 = 200
+        peak_range_2 = 500
     bars = ""
-    if peak > 100: 
+    if peak > peak_range_1: 
         bars="ll"*int(50*peak/2**16)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
-        if peak > 700:
+        if peak > peak_range_2:
             #stop stream
             stream.stop_stream()  
             stream.close()
