@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 // GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
@@ -462,19 +463,20 @@ void main(int argc, char* argv[])
 
 //oled 1 sentence    -> setence     print
 //oled 0 num		 -> bmps[num]   draw bmp picture
- 	
-  if(atoi(argv[1])==1){
-  char result[80];
-  for (int i = 2; i < argc ; i++){
-    strcat(result, argv[i]);
-    strcat(result, " ");
-    LCD_P6x8Str(0,2,result);
-    }
-  }
-  else{
-	char c = argv[2]-'0';
-	Draw_BMP(bmps[2]);
-	}
+
+
+  char texts[] = "Nice to meet you.";
+  LCD_P6x8Str(0, 2, texts);
+  Sleep(3000);
+
+  Draw_BMP(bmps[1]);
+
+  Sleep(3000);
+
+  char texts2[] = "Hey! Watch out!";
+  LCD_P6x8Str(0, 2, texts2);
+  
+  Sleep(3000);
 }
 
 
