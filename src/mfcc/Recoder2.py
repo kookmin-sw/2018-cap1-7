@@ -30,38 +30,38 @@ if __name__ == "__main__":
 
     f = sys.argv[1]
     DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/"+f+"/"
-    peak_range = int(sys.argv[2])
-    num = 0
+   # peak_range = int(sys.argv[2])
+    num = int(sys.argv[2])
     sec = 0.5
 
-    p=pyaudio.PyAudio() # start the PyAudio class 
+   # p=pyaudio.PyAudio() # start the PyAudio class 
 
-    stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
-              frames_per_buffer=CHUNK) 
+    #stream=p.open(format=pyaudio.paInt16,channels=1,rate=RATE,input=True,
+     #         frames_per_buffer=CHUNK) 
 
 
 
     while 1:
 
-        data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
+      #  data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
 
-        peak=np.average(np.abs(data))*2
+       # peak=np.average(np.abs(data))*2
 
-        print peak
+       # print peak
 
         #time.sleep(0.09)#print time
-        if peak > peak_range:
-            print "*************************************"
-            make_wav(f, num, sec,DIR)
-           # fn = DIR + f + str(num) + ".wav"
-            X = []
-            #create_ceps(fn)
-            num = num + 1
+        #if peak > peak_range:
+        print "*************************************"
+        make_wav(f, num, sec,DIR)
+        # fn = DIR + f + str(num) + ".wav"
+        X = []
+        #create_ceps(fn)
+        num = num + 1
 
     
-    stream.stop_stream()  
-    stream.close()
-    p.terminate()
+   # stream.stop_stream()  
+ #   stream.close()
+  #  p.terminate()
 
 
 
