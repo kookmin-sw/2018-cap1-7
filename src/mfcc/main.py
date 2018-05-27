@@ -57,8 +57,8 @@ def get_volume():
 
     peak=np.average(np.abs(data))*2
     if len(sys.argv) > 1:
-        peak_range_1=sys.argv[1]
-        peak_range_2=sys.argv[2]
+        peak_range_1=int(sys.argv[1])
+        peak_range_2=int(sys.argv[2])
     else:
         peak_range_1 = 500
         peak_range_2 = 1000
