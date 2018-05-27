@@ -5,6 +5,9 @@
 // GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
 
+// delay  
+#include <unistd.h>
+
 //
 #include "bmp_list.h"
 
@@ -463,14 +466,14 @@ void main(int argc, char* argv[])
 //oled 1 sentence    -> setence     print
 //oled 0 num		 -> bmps[num]   draw bmp picture
   LCD_P6x8Str(0, 2, "Nice to meet you.");
+  sleep(2);
 
-
-  char texts[] = "Nice to meet you.";
+  char texts[] = "one.";
   LCD_P6x8Str(0, 2, texts);
   Draw_BMP(bmps[1]);
 
  
-  char texts2[] = "Hey! Watch out!";
+  char texts2[] = "two";
   LCD_P6x8Str(0, 2, texts2);
   
 }
