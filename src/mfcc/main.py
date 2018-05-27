@@ -126,7 +126,7 @@ def create_ceps(fn):
 
 
 if __name__ == "__main__":
-    sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break', 5: 'scream'}
+    sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break'}
     wavfile_num = 0
     wavfile_name = "file"
     X, y = read_ceps(genre_list)
