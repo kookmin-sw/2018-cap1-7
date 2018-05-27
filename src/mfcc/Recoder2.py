@@ -25,11 +25,12 @@ RATE = 44100
 
 if __name__ == "__main__":
 
-    DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/recc/"
+
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     f = sys.argv[1]
-    peak_range = 500
+    DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/"+f+"/"
+    peak_range = int(sys.argv[2])
     num = 0
     sec = 0.5
 
@@ -50,11 +51,11 @@ if __name__ == "__main__":
 
         #time.sleep(0.09)#print time
         if peak > peak_range:
-            print "a"
+            print "*************************************"
             make_wav(f, num, sec,DIR)
-            fn = DIR + f + str(num) + ".wav"
+           # fn = DIR + f + str(num) + ".wav"
             X = []
-            create_ceps(fn)
+            #create_ceps(fn)
             num = num + 1
 
     
