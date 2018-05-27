@@ -60,11 +60,11 @@ def get_volume():
         peak_range_1=sys.argv[1]
         peak_range_2=sys.argv[2]
     else:
-        peak_range_1 = 200
-        peak_range_2 = 500
+        peak_range_1 = 500
+        peak_range_2 = 1000
     bars = ""
     if peak > peak_range_1: 
-        bars="ll"*int(50*peak/2**16)
+        bars="ll"*int(50*peak/2**13)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
