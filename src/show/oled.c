@@ -8,7 +8,7 @@
 // GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
 
-//
+
 #include "bmp_list.h"
 
 #define byte  unsigned char
