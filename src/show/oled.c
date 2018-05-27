@@ -487,6 +487,7 @@ void main(int argc, char* argv[])
 
     Draw_BMP(bmps[3]);
     sleep(5);
+
   }
 
 }
