@@ -23,7 +23,7 @@ def make_wav(name="file",num=0,sec=5, dirr ="0" ):
 		            #input_device_index=2,
 		            frames_per_buffer=CHUNK)
 
-	print "recording..."
+	#print "recording..."
 
 	frames = []
 
@@ -33,7 +33,7 @@ def make_wav(name="file",num=0,sec=5, dirr ="0" ):
 
 		frames.append(data)
 
-	print "finished recording"
+	#print "finished recording"
 
 	 
 	# stop Recording
