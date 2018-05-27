@@ -466,12 +466,12 @@ void main(int argc, char* argv[])
 //oled 1 sentence    -> setence     print
 //oled 0 num		 -> bmps[num]   draw bmp picture
 
-  while (True) {
+  while (1) {
     char texts[] = "Hi.";
     LCD_P6x8Str(0, 2, texts);
     sleep(5);
       
-    Draw_BMP(bmps[1]);
+    Draw_BMP(bmps[2]);
     sleep(5);
 
     char texts2[] = "Hey! Watch out!";
