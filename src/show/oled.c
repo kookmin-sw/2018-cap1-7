@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <windows.h>
+
+// for sleep
+#include <unistd.h>
 
 // GPIO Interface library for the Raspberry Pi
 #include <wiringPi.h>
@@ -467,16 +469,16 @@ void main(int argc, char* argv[])
 
   char texts[] = "Nice to meet you.";
   LCD_P6x8Str(0, 2, texts);
-  Sleep(3000);
+  sleep(5);
 
   Draw_BMP(bmps[1]);
 
-  Sleep(3000);
+  sleep(5);
 
   char texts2[] = "Hey! Watch out!";
   LCD_P6x8Str(0, 2, texts2);
   
-  Sleep(3000);
+  sleep(5);
 }
 
 
