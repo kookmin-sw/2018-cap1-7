@@ -121,6 +121,7 @@ def read_files(fn, genre, base_dir=genre_dir ):
 
 
 if __name__ == "__main__":
+    count = 0
     X, y = read_ceps(genre_list)
 
     train_avg, test_avg, cms ,clfss= train_model(
@@ -128,7 +129,8 @@ if __name__ == "__main__":
 
     cm_avg = np.mean(cms, axis=0)
     cm_norm = cm_avg / np.sum(cm_avg, axis=0)
-
+    
+    sound = raw_input("Sound type: ")
     sub_dir = raw_input("sub_dir : ")
     fn ="*.ceps.npy"
 
@@ -141,8 +143,15 @@ if __name__ == "__main__":
     print(arr_c)
     for i in arr_c :
         print (genre_list[i])
+        if sound == genre_list[i]:
+            count = count + 1
+            
     print("-----------------------")
     print("-----------------------")
+    print(count)
+    print(len(arr_c))
+    performance = (float(count) / len(arr_c)) * 100.0
+    print ("The accuracy is " + str(performance) + "%.")
 
     plot_confusion_matrix(cm_norm, genre_list, "ceps",
                           "Confusion matrix of a CEPS based classifier")

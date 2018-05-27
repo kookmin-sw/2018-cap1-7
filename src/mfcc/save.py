@@ -3,14 +3,16 @@ import wave
 import sys
 
 
-def make_wav(name="file",num=0,sec=5):
+def make_wav(name="file",num=0,sec=5, dirr ="0" ):
 	FORMAT = pyaudio.paInt16
 	CHANNELS = 1
 	RATE = 44100
 	CHUNK = 2048
 	RECORD_SECONDS = sec
-	WAVE_OUTPUT_FILENAME = name+str(num)+".wav"
-
+	if dirr == "0":
+		WAVE_OUTPUT_FILENAME = name+str(num)+".wav"
+	else :
+		WAVE_OUTPUT_FILENAME = dirr + name+str(num)+".wav"       
 	audio = pyaudio.PyAudio()
 
 	# start Recording
@@ -21,7 +23,7 @@ def make_wav(name="file",num=0,sec=5):
 		            #input_device_index=2,
 		            frames_per_buffer=CHUNK)
 
-	print "recording..."
+	#print "recording..."
 
 	frames = []
 
@@ -31,7 +33,7 @@ def make_wav(name="file",num=0,sec=5):
 
 		frames.append(data)
 
-	print "finished recording"
+	#print "finished recording"
 
 	 
 	# stop Recording
