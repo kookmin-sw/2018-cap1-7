@@ -469,24 +469,33 @@ void main(int argc, char* argv[])
   while (1) {
     char texts[] = "Hi.";
     LCD_P6x8Str(0, 2, texts);
-    sleep(5);
+    sleep(2);
+
+    strcat(texts, "I brought my dog.");
+    LCD_P6x8Str(0, 2, texts);
+    sleep(2);
       
-    Draw_BMP(bmps[2]);
-    sleep(5);
+    Draw_BMP(bmps[0]);
+    sleep(2);
+
+    Draw_BMP(bmps[1]);
+    sleep(2);
+
+    LCD_P6x8Str(0, 2, " ");
 
     char texts2[] = "Hey! Watch out!";
     LCD_P6x8Str(0, 2, texts2);
     sleep(5);
 
-    char result[80] = "";
-    for (int i = 2; i < 5 ; i++){
+    char result[80] = " ";
+    for (int i = 0; i < 5 ; i++){
       strcat(result, "ll");
       LCD_P6x8Str(0,2,result);
-      sleep(0.5);
+      sleep(1);
     }
 
     Draw_BMP(bmps[3]);
-    sleep(5);
+    sleep(2);
 
   }
 
