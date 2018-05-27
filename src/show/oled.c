@@ -467,6 +467,8 @@ void main(int argc, char* argv[])
 //oled 0 num		 -> bmps[num]   draw bmp picture
 
   while (1) {
+    LCD_Init();
+    
     char texts[] = "Hi.";
     LCD_P6x8Str(0, 2, texts);
     sleep(2);
@@ -474,12 +476,18 @@ void main(int argc, char* argv[])
     strcat(texts, "I brought my dog.");
     LCD_P6x8Str(0, 2, texts);
     sleep(2);
+
+    LCD_Init();
       
     Draw_BMP(bmps[0]);
     sleep(2);
 
+    LCD_Init();
+
     Draw_BMP(bmps[1]);
     sleep(2);
+
+    LCD_Init();
 
     LCD_P6x8Str(0, 2, " ");
 
@@ -487,12 +495,16 @@ void main(int argc, char* argv[])
     LCD_P6x8Str(0, 2, texts2);
     sleep(5);
 
+    LCD_Init();
+
     char result[80] = " ";
     for (int i = 0; i < 5 ; i++){
       strcat(result, "ll");
       LCD_P6x8Str(0,2,result);
       sleep(1);
     }
+
+    LCD_Init();
 
     Draw_BMP(bmps[3]);
     sleep(2);
