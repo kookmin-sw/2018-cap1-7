@@ -471,7 +471,7 @@ void main(int argc, char* argv[])
     LCD_P6x8Str(0,2,result);
     }
   }
-  else{
+  else if (atoi(argv[1])==0){
 	int c = atoi(argv[2]);
 	Draw_BMP(bmps[c]);
 	}
