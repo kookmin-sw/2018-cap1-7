@@ -51,15 +51,32 @@ GPIO.setup(14, GPIO.IN)
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
+
+    value_stt = GPIO.input(14)
+    print("value is", value_stt)
+    if value_stt == False :
+        os.system("python displaytext.py")
+
     def __init__(self, rate, chunk):
         self._rate = rate
         self._chunk = chunk
+
+        value_stt = GPIO.input(14)
+        print("value is", value_stt)
+        if value_stt == False :
+            os.system("python displaytext.py")
 
         # Create a thread-safe buffer of audio data
         self._buff = queue.Queue()
         self.closed = True
 
     def __enter__(self):
+
+        value_stt = GPIO.input(14)
+        print("value is", value_stt)
+        if value_stt == False :
+            os.system("python displaytext.py")
+
         self._audio_interface = pyaudio.PyAudio()
         self._audio_stream = self._audio_interface.open(
             format=pyaudio.paInt16,
@@ -92,6 +109,12 @@ class MicrophoneStream(object):
         return None, pyaudio.paContinue
 
     def generator(self):
+
+        value_stt = GPIO.input(14)
+        print("value is", value_stt)
+        if value_stt == False :
+            os.system("python displaytext.py")
+
         while not self.closed:
             # Use a blocking get() to ensure there's at least one chunk of
             # data, and stop iteration if the chunk is None, indicating the
@@ -103,6 +126,11 @@ class MicrophoneStream(object):
 
             # Now consume whatever other data's still buffered.
             while True:
+                #this part is the point
+                value_stt = GPIO.input(14)
+                #print("value is", value_stt)
+                if value_stt == False :
+                    os.system("python displaytext.py")
                 try:
                     chunk = self._buff.get(block=False)
                     if chunk is None:
