@@ -29,8 +29,8 @@ for d in [DATA_DIR, CHART_DIR]:
 
 WAV_DIR= "/home/viewtiful/2018-cap1-7/src/sounds"
 
-#GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/new_sounds"
-GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/soundNnew_rec"
+GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/new_sounds"
+#GENRE_DIR = "/home/viewtiful/2018-cap1-7/src/mfcc/soundNnew_rec"
 GENRE_LIST = ["dog", "gun","dryer","car_horn","break"]
 
 
