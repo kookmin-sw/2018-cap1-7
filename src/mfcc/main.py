@@ -206,5 +206,5 @@ if __name__ == "__main__":
         value_sound = GPIO.input(18)
 
 
-    os.system("sudo ./oled off")
+    os.system("sudo ./oled 1 off")
     os.system("python displaytext.py")
