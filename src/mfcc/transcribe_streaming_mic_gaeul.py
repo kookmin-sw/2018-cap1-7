@@ -162,11 +162,6 @@ def listen_print_loop(responses):
 
     num_chars_printed = 0
     for response in responses:
-        value_stt = GPIO.input(14)
-        print("value is", value_stt)
-
-        if value_stt == False :
-            os.system("python displaytext.py")
 
         
         if not response.results:
