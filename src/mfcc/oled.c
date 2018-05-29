@@ -365,7 +365,7 @@ void LCD_P6x8Str(unsigned char x,unsigned char y,unsigned char ch[])
   while (ch[j]!='\0')
   {    
     c =ch[j]-32;
-    if(x>126){x=0;y++;}
+    if(x>114){x=0;y++;}
     LCD_Set_Pos(x,y);    
   	for(i=0;i<6;i++)     
   	  LCD_WrDat(F6x8[c][i]);  
@@ -471,7 +471,7 @@ void main(int argc, char* argv[])
     LCD_P6x8Str(0,2,result);
     }
   }
-  else{
+  else if (atoi(argv[1])==0){
 	int c = atoi(argv[2]);
 	Draw_BMP(bmps[c]);
 	}

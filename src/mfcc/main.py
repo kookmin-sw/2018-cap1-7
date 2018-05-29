@@ -136,7 +136,7 @@ if __name__ == "__main__":
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     instruction = "started the volume size function"
-    os.system('sudo ./oled %s' %instruction)
+    os.system('sudo ./oled 1 %s' %instruction)
     time.sleep(1.5)
 
 
@@ -147,7 +147,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system('sudo ./oled off')
+            os.system('sudo ./oled 1 off')
             os.system("python displaytext.py")
 
         make_wav("file", wavfile_num, 0.5)
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system("sudo ./oled off")
+            os.system("sudo ./oled 1 off")
             os.system("python displaytext.py")
 
         fn = DIR + "file" + str(wavfile_num) + ".wav"
@@ -163,7 +163,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system("sudo ./oled off")
+            os.system("sudo ./oled 1 off")
             os.system("python displaytext.py")
 
         X = []
@@ -174,7 +174,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system("sudo ./oled off")
+            os.system("sudo ./oled 1 off")
             os.system("python displaytext.py")
 
         X.append(np.mean(ceps[int(num_ceps / 10):int(num_ceps * 9 / 10)], axis=0))
@@ -184,7 +184,7 @@ if __name__ == "__main__":
         # should think better idea
         value_sound = GPIO.input(18)
         if value_sound == 0 :
-            os.system("sudo ./oled off")
+            os.system("sudo ./oled 1 off")
             os.system("python displaytext.py")
        
         if check==1 :
@@ -206,5 +206,5 @@ if __name__ == "__main__":
         value_sound = GPIO.input(18)
 
 
-    os.system("sudo ./oled off")
+    os.system("sudo ./oled 1 off")
     os.system("python displaytext.py")
