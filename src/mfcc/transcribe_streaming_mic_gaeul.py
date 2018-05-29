@@ -53,7 +53,7 @@ class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
 
     value_stt = GPIO.input(14)
-    print("value is", value_stt)
+    #print("value is", value_stt)
     if value_stt == False :
         os.system("python displaytext.py")
 
@@ -62,7 +62,7 @@ class MicrophoneStream(object):
         self._chunk = chunk
 
         value_stt = GPIO.input(14)
-        print("value is", value_stt)
+        #print("value is", value_stt)
         if value_stt == False :
             os.system("python displaytext.py")
 
@@ -73,7 +73,7 @@ class MicrophoneStream(object):
     def __enter__(self):
 
         value_stt = GPIO.input(14)
-        print("value is", value_stt)
+        #print("value is", value_stt)
         if value_stt == False :
             os.system("python displaytext.py")
 
@@ -111,7 +111,7 @@ class MicrophoneStream(object):
     def generator(self):
 
         value_stt = GPIO.input(14)
-        print("value is", value_stt)
+        #print("value is", value_stt)
         if value_stt == False :
             os.system("python displaytext.py")
 
@@ -184,7 +184,7 @@ def listen_print_loop(responses):
         # some extra spaces to overwrite the previous result
         overwrite_chars = ' ' * (num_chars_printed - len(transcript))
 
-        #value_stt = GPIO.input(14)
+        value_stt = GPIO.input(14)
         #print("value is", value_stt)
         if value_stt == False :
             os.system("python displaytext.py")
@@ -201,7 +201,7 @@ def listen_print_loop(responses):
             os.system('sudo ./oled 1 %s' %text)
 
             value_stt = GPIO.input(14)
-            print("value is", value_stt)
+            #print("value is", value_stt)
 
             if value_stt == False :
                 os.system("python displaytext.py")
@@ -239,6 +239,7 @@ def main():
         value_stt = GPIO.input(14)
 
         instruction = "started the speech to text function"
+        print(instruction)
         os.system('sudo ./oled 1 %s' %instruction)
 
         # Now, put the transcription responses to use.

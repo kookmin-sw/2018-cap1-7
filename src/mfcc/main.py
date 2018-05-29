@@ -136,6 +136,7 @@ if __name__ == "__main__":
     #    DIR = "C:\Users\lynn\PycharmProjects\\2018-cap1-7\src\mfcc"
 
     instruction = "started the volume size function"
+    print(instruction)
     os.system('sudo ./oled 1 %s' %instruction)
     time.sleep(1.5)
 
