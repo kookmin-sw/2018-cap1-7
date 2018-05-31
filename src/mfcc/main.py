@@ -61,10 +61,10 @@ def get_volume():
         peak_range_2=int(sys.argv[2])
     else:
         peak_range_1 = 500
-        peak_range_2 = 1000
+        peak_range_2 = 2000
     bars = ""
     if peak > peak_range_1: 
-        bars="ll"*int(50*peak/2**13)
+        bars="l"+"l"*int((peak-500)/100)
         print("%04d %s"%(peak,bars)) # output 
         
         #time.sleep(0.09)#print time
@@ -126,7 +126,7 @@ def create_ceps(fn):
 
 
 if __name__ == "__main__":
-    sounds = {0:'dog', 1:'gun', 2:'dryer', 3:'car_horn', 4:'break'}
+    sounds = {0:'dog', 1:'dog',2:'dryer', 3:'car_horn', 4:'break'}
     wavfile_num = 0
     wavfile_name = "file"
     X, y = read_ceps(genre_list)
@@ -197,7 +197,7 @@ if __name__ == "__main__":
                     str_ =  '0 '+ str(predicted_key)
                     os.system('sudo ./oled %s' %str_)
                     print '-----------------------'
-                    print '>> file_'+str(wavfile_num)+ ' = ['+sounds.get(predicted_key)+']'
+                    print '>> file_'+str(wavfile_num)+ ' = ['+genre_list[predicted_key]+']'
                     print '-----------------------'
         else:
             a = '1 '+bars
